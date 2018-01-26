@@ -1,0 +1,416 @@
+{
+    "get_customers": {
+        "method": "get",
+        "api_dict": {
+            "path": "/customers"
+        }
+    },
+    "get_customer": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/customers"
+        }
+    },
+    "add_customer": {
+        "method": "post",
+        "api_dict": {
+            "path": "/customers"
+        }
+    },
+    "update_customer": {
+        "method": "patch",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/customers"
+        }
+    },
+    "get_legal_information": {
+        "method": "get",
+        "api_dict": {
+            "path": "/legal"
+        }
+    },
+    "get_contact_information": {
+        "method": "get",
+        "api_dict": {
+            "path": "/legal/contact-information"
+        }
+    },
+    "get_privacy_policy": {
+        "method": "get",
+        "api_dict": {
+            "path": "/legal/privacy-policy"
+        }
+    },
+    "get_terms_and_conditions": {
+        "method": "get",
+        "api_dict": {
+            "path": "/legal/terms-and-conditions"
+        }
+    },
+    "get_rights_of_withdrawal": {
+        "method": "get",
+        "api_dict": {
+            "path": "/legal/rights-of-withdrawal"
+        }
+    },
+    "get_shipping_information": {
+        "method": "get",
+        "api_dict": {
+            "path": "/legal/shipping-information"
+        }
+    },
+    "update_contact_information": {
+        "method": "put",
+        "require": ["q_locale"],
+        "api_dict": {
+            "path": "/legal/contact-information"
+        }
+    },
+    "update_privacy_policy": {
+        "method": "put",
+        "require": ["q_locale"],
+        "api_dict": {
+            "path": "/legal/privacy-policy"
+        }
+    },
+    "update_terms_and_conditions": {
+        "method": "put",
+        "require": ["q_locale"],
+        "api_dict": {
+            "path": "/legal/terms-and-conditions"
+        }
+    },
+    "update_rights_of_withdrawal": {
+        "method": "put",
+        "require": ["q_locale"],
+        "api_dict": {
+            "path": "/legal/rights-of-withdrawal"
+        }
+    },
+    "update_shipping_information": {
+        "method": "put",
+        "require": ["q_locale"],
+        "api_dict": {
+            "path": "/legal/shipping-information"
+        }
+    },
+    "get_newsletter-campaigns": {
+        "method": "get",
+        "api_dict": {
+            "path": "/newsletter-campaigns"
+        }
+    },
+    "get_newsletter_campaign_subscribers": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/newsletter-campaigns"
+        },
+        "path2": "/subscribers"
+    },
+    "get_orders": {
+        "method": "get",
+        "api_dict": {
+            "path": "/orders"
+        }
+    },
+    "get_order": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/orders"
+        }
+    },
+    "get_order_documents": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/orders"
+        },
+        "path2": "/documents"
+    },
+    "get_sales": {
+        "method": "get",
+        "api_dict": {
+            "path": "/sales"
+        }
+    },
+    "add_order": {
+        "method": "post",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/carts"
+        },
+        "path2": "/order"
+    },
+    "update_order": {
+        "method": "patch",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/orders"
+        }
+    },
+    "get_shop_info": {
+        "method": "get",
+        "api_dict": {
+            "path": ""
+        }
+    },
+    "get_categories": {
+        "method": "get",
+        "api_dict": {
+            "path": "/categories"
+        }
+    },
+    "get_category": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/categories"
+        }
+    },
+    "get_currencies": {
+        "method": "get",
+        "api_dict": {
+            "path": "/currencies"
+        }
+    },
+    "get_locales": {
+        "method": "get",
+        "api_dict": {
+            "path": "/locales"
+        }
+    },
+    "get_products": {
+        "method": "get",
+        "api_dict": {
+            "path": "/products"
+        }
+    },
+    "get_product": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/products"
+        }
+    },
+    "get_product_variations": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/products"
+        },
+        "path2": "/variations"
+    },
+    "get_product_images": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/products"
+        },
+        "path2": "/slideshow"
+    },
+    "get_product_image_names": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/products"
+        },
+        "path2": "/slideshow/sequence"
+    },
+    "get_product_custom_attributes": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/products"
+        },
+        "path2": "/custom-attributes"
+    },
+    "get_product_lowest_price": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/products"
+        },
+        "path2": "/lowest-price"
+    },
+    "search_products": {
+        "method": "get",
+        "require": ["q_query"],
+        "api_dict": {
+            "path": "/search/product-suggest"
+        }
+    },
+    "get_shipping_methods": {
+        "method": "get",
+        "api_dict": {
+            "path": "/shipping-methods"
+        }
+    },
+    "get_shipping_method": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/shipping-methods"
+        }
+    },
+    "get_tax_classes": {
+        "method": "get",
+        "api_dict": {
+            "path": "/tax-classes"
+        }
+    },
+    "get_tax_class": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/tax-classes"
+        }
+    },
+    "get_tax_model": {
+        "method": "get",
+        "api_dict": {
+            "path": "/tax-model"
+        }
+    },
+    "add_category": {
+        "method": "post",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/categories"
+        }
+    },
+    "update_category": {
+        "method": "put",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/categories"
+        }
+    },
+    "delete_category": {
+        "method": "delete",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/categories"
+        }
+    },
+    "get_subcategory_sequence": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/categories"
+        },
+        "path2": "/sequence"
+    },
+    "update_subcategory_sequence": {
+        "method": "put",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/categories"
+        },
+        "path2": "/sequence"
+    },
+    "add_product": {
+        "method": "post",
+        "api_dict": {
+            "path": "/products"
+        }
+    },
+    "update_product": {
+        "method": "patch",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/products"
+        }
+    },
+    "delete_product": {
+        "method": "delete",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/products"
+        }
+    },
+    "upload_product_image": {
+        "method": "post",
+        "require": ["param1"],
+        "api_dict": {
+            "use_files": 1,
+            "path": "/products"
+        },
+        "path2": "/slideshow"
+    },
+    "delete_product_image": {
+        "method": "delete",
+        "require": ["param1", "param2"],
+        "api_dict": {
+            "path": "/products"
+        },
+        "path2": "/slideshow"
+    },
+    "update_product_image_sequence": {
+        "method": "put",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/products"
+        },
+        "path2": "/slideshow/sequence"
+    },
+    "get_updated_products": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/products/updated"
+        }
+    },
+    "connect_category_and_product": {
+        "method": "post",
+        "api_dict": {
+            "headers": {
+                "Accept": "*/*",
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            "use_data": 1,
+            "path": "/product-category-assignments"
+        }
+    },
+    "delete_product_from_category": {
+        "method": "delete",
+        "require": ["q_categoryId", "q_productId"],
+        "api_dict": {
+            "path": "/product-category-assignments"
+        }
+    },
+    "get_watched_products": {
+        "method": "get",
+        "api_dict": {
+            "path": "/watched-products"
+        }
+    },
+    "get_product_csv": {
+        "method": "get",
+        "api_dict": {
+            "path": "/products/export"
+        }
+    },
+    "get_script_tags": {
+        "method": "get",
+        "api_dict": {
+            "path": "/script-tags"
+        }
+    },
+    "add_script_tag": {
+        "method": "post",
+        "api_dict": {
+            "path": "/script-tags"
+        }
+    },
+    "delete_script_tag": {
+        "method": "delete",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/script-tags"
+        }
+    }
+}

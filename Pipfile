@@ -1,0 +1,24 @@
+[[source]]
+
+name = "pypi"
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+
+
+[packages]
+
+"flake8" = "*"
+requests = "*"
+pylint = "*"
+validators = "*"
+sphinx = "*"
+coverage = "*"
+
+
+[requires]
+
+python_version = "3.6"
+
+
+[dev-packages]
+
