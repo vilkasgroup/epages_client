@@ -6,8 +6,8 @@ ePages Client Py3
 .. image:: https://img.shields.io/pypi/v/epages_client.svg
         :target: https://pypi.python.org/pypi/epages_client
 
-.. image:: https://img.shields.io/travis/spexii/epages_client.svg
-        :target: https://travis-ci.org/spexii/epages_client
+.. image:: https://img.shields.io/travis/vilkasgroup/epages_client.svg
+        :target: https://travis-ci.org/vilkasgroup/epages_client
 
 .. image:: https://readthedocs.org/projects/epages-client-py3/badge/?version=latest
         :target: https://epages-client-py3.readthedocs.io/en/latest/?badge=latest
