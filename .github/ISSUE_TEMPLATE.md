@@ -1,4 +1,4 @@
-* ePages Client Py3 version:
+* ePages Client version:
 * Python version:
 * Operating System:
 

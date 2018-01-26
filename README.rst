@@ -1,5 +1,5 @@
 =================
-ePages Client Py3
+ePages Client
 =================
 
 
@@ -9,12 +9,12 @@ ePages Client Py3
 .. image:: https://img.shields.io/travis/vilkasgroup/epages_client.svg
         :target: https://travis-ci.org/vilkasgroup/epages_client
 
-.. image:: https://readthedocs.org/projects/epages-client-py3/badge/?version=latest
-        :target: https://epages-client-py3.readthedocs.io/en/latest/?badge=latest
+.. image:: https://readthedocs.org/projects/epages-client/badge/?version=latest
+        :target: https://epages-client.readthedocs.io/en/latest/?badge=latest
         :alt: Documentation Status
 
-.. image:: https://pyup.io/repos/github/spexii/epages_client/shield.svg
-     :target: https://pyup.io/repos/github/spexii/epages_client/
+.. image:: https://pyup.io/repos/github/vilkasgroup/epages_client/shield.svg
+     :target: https://pyup.io/repos/github/vilkasgroup/epages_client/
      :alt: Updates
 
 
@@ -22,7 +22,7 @@ Python 3 client for ePages REST API.
 
 
 * Free software: MIT license
-* Documentation: https://epages-client-py3.readthedocs.io.
+* Documentation: https://epages-client.readthedocs.io.
 
 
 Features

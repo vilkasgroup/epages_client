@@ -7,7 +7,7 @@ python:
   - 2.7
 
 # command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-install: pip install -U tox-travis
+install: pip install -U tox-travis python-coveralls
 
 # command to run tests, e.g. python setup.py test
 script: tox
@@ -24,3 +24,8 @@ script: tox
 #    tags: true
 #    repo: spexii/epages_client
 #    python: 2.7
+
+after_success:
+  - coverage run --source epages_client setup.py test
+  - coverage report
+  - coveralls
