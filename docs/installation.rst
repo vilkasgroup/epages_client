@@ -8,13 +8,13 @@ Installation
 Stable release
 --------------
 
-To install ePages Client Py3, run this command in your terminal:
+To install ePages Client, run this command in your terminal:
 
 .. code-block:: console
 
     $ pip install epages_client
 
-This is the preferred method to install ePages Client Py3, as it will always install the most recent stable release. 
+This is the preferred method to install ePages Client, as it will always install the most recent stable release. 
 
 If you don't have `pip`_ installed, this `Python installation guide`_ can guide
 you through the process.
@@ -26,7 +26,7 @@ you through the process.
 From sources
 ------------
 
-The sources for ePages Client Py3 can be downloaded from the `Github repo`_.
+The sources for ePages Client can be downloaded from the `Github repo`_.
 
 You can either clone the public repository:
 

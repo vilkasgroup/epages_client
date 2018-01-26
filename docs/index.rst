@@ -1,4 +1,4 @@
-Welcome to ePages Client Py3's documentation!
+Welcome to ePages Client's documentation!
 ======================================
 
 Contents:

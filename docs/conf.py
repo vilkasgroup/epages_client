@@ -55,7 +55,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'ePages Client Py3'
+project = u'ePages Client'
 copyright = u"2018, Pekka Piispanen"
 
 # The version info for the project you're documenting, acts as replacement
@@ -209,7 +209,7 @@ latex_elements = {
 # [howto/manual]).
 latex_documents = [
     ('index', 'epages_client.tex',
-     u'ePages Client Py3 Documentation',
+     u'ePages Client Documentation',
      u'Pekka Piispanen', 'manual'),
 ]
 
@@ -240,7 +240,7 @@ latex_documents = [
 # (source start file, name, description, authors, manual section).
 man_pages = [
     ('index', 'epages_client',
-     u'ePages Client Py3 Documentation',
+     u'ePages Client Documentation',
      [u'Pekka Piispanen'], 1)
 ]
 
@@ -255,7 +255,7 @@ man_pages = [
 #  dir menu entry, description, category)
 texinfo_documents = [
     ('index', 'epages_client',
-     u'ePages Client Py3 Documentation',
+     u'ePages Client Documentation',
      u'Pekka Piispanen',
      'epages_client',
      'One line description of project.',

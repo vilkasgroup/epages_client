@@ -2,6 +2,6 @@
 Usage
 =====
 
-To use ePages Client Py3 in a project::
+To use ePages Client in a project::
 
     import epages_client

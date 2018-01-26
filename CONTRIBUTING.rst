@@ -38,8 +38,8 @@ and "help wanted" is open to whoever wants to implement it.
 Write Documentation
 ~~~~~~~~~~~~~~~~~~~
 
-ePages Client Py3 could always use more documentation, whether as part of the
-official ePages Client Py3 docs, in docstrings, or even on the web in blog posts,
+ePages Client could always use more documentation, whether as part of the
+official ePages Client docs, in docstrings, or even on the web in blog posts,
 articles, and such.
 
 Submit Feedback
