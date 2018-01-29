@@ -3,12 +3,6 @@ from __future__ import unicode_literals
 
 import os
 
-# import base class for unit testing
-from .base_unit_test import BaseUnitTest
-
-# import the package
-import epages_client
-
 # import the RestClient class
 from epages_client.client import RestClient
 
@@ -17,6 +11,9 @@ from epages_client.dataobjects.contact_info import ContactInfo
 
 # Import the content page class
 from epages_client.dataobjects.content_page import ContentPage
+
+# import base class for unit testing
+from .base_unit_test import BaseUnitTest
 
 
 class TestLegalMethods(BaseUnitTest):
