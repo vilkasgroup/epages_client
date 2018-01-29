@@ -33,7 +33,7 @@ setup(
     long_description=readme + '\n\n' + history,
     author="Pekka Piispanen",
     author_email='pekka@vilkas.fi',
-    url='https://github.com/spexii/epages_client',
+    url='https://github.com/vilkasgroup/epages_client',
     packages=find_packages(include=['epages_client']),
     include_package_data=True,
     install_requires=requirements,
