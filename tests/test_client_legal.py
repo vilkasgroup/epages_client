@@ -53,19 +53,22 @@ class TestLegalMethods(BaseUnitTest):
 
     def test_004_get_terms_and_conditions(self):
 
-        terms_and_conditions = self.client.get_terms_and_conditions(self.params)
+        terms_and_conditions = self.client.get_terms_and_conditions(
+            self.params)
 
         self.assertEqual(isinstance(terms_and_conditions, dict), True)
 
     def test_005_get_rights_of_withdrawal(self):
 
-        rights_of_withdrawal = self.client.get_rights_of_withdrawal(self.params)
+        rights_of_withdrawal = self.client.get_rights_of_withdrawal(
+            self.params)
 
         self.assertEqual(isinstance(rights_of_withdrawal, dict), True)
 
     def test_006_get_shipping_information(self):
 
-        shipping_information = self.client.get_shipping_information(self.params)
+        shipping_information = self.client.get_shipping_information(
+            self.params)
 
         self.assertEqual(isinstance(shipping_information, dict), True)
 
@@ -139,7 +142,8 @@ class TestLegalMethods(BaseUnitTest):
 
         self.params["query"]["locale"] = "en_GB"
 
-        terms_and_conditions = self.client.get_terms_and_conditions(self.params)
+        terms_and_conditions = self.client.get_terms_and_conditions(
+            self.params)
 
         content_page = ContentPage()
 
