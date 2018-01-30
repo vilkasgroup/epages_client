@@ -32,8 +32,14 @@ class HttpHandler(object):
             self.api_url = self.api_url[:-1]
 
     def get(self, dict_data):
-        # Add content type header
-        self._default_headers["Content-Type"] = "application/json"
+
+        # If headers are given in dict_data, merge them with current headers
+        if "headers" in dict_data and dict_data["headers"]:
+            self._default_headers.update(dict_data["headers"])
+
+        # If there isn't already a content type header, add it
+        if "Content-Type" not in self._default_headers:
+            self._default_headers["Content-Type"] = "application/json"
 
         """Do GET request"""
         return self._request(requests.get, dict_data)
@@ -41,10 +47,13 @@ class HttpHandler(object):
     def post(self, dict_data):
 
         # If headers are given in dict_data, merge them with current headers
+        # Note: In all current post method situations there are custom Content-Type
+        # given. This if-else here assumes, that Content-Type is always given with
+        # the custom headers and it's only set in the else section.
         if "headers" in dict_data and dict_data["headers"]:
             self._default_headers.update(dict_data["headers"])
         # If there isn't file going to be uploaded, set the default
-        # content type header. For file uploads there should none.
+        # content type header. For file uploads there should be none.
         elif "use_files" not in dict_data:
             # Add default content type header
             self._default_headers["Content-Type"] = "application/json"
