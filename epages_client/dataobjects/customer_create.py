@@ -34,4 +34,12 @@ class CustomerCreate(DataObject):
             value, "internalNote has to be str")
 
     def is_valid(self):
-        return self.billingAddress.is_valid()
+        # Get values for billing address
+        billing_address_values = self.billingAddress.__dict__
+
+        # Loop values and check, if there's even one set
+        for key in billing_address_values:
+            if billing_address_values[key] != None:
+                return True
+
+        return False
