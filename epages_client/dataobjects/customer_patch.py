@@ -25,3 +25,6 @@ class CustomerPatch(CustomerCreate):
 
     def get_patch(self):
         return self.get_list_of_json_patches(self.legals)
+
+    def is_valid(self):
+        return self.billingAddress.is_valid()

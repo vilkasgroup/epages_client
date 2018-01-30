@@ -96,7 +96,7 @@
             "path": "/legal/shipping-information"
         }
     },
-    "get_newsletter-campaigns": {
+    "get_newsletter_campaigns": {
         "method": "get",
         "api_dict": {
             "path": "/newsletter-campaigns"
