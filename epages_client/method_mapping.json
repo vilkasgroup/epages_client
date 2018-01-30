@@ -137,6 +137,27 @@
             "path": "/sales"
         }
     },
+    "get_cart": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/carts"
+        }
+    },
+    "add_cart": {
+        "method": "post",
+        "api_dict": {
+            "path": "/carts"
+        }
+    },
+    "add_cart_line_item": {
+        "method": "post",
+        "api_dict": {
+            "path": "/carts"
+        },
+        "require": ["param1"],
+        "path2": "line-items"
+    },
     "add_order": {
         "method": "post",
         "require": ["param1"],

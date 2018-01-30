@@ -152,6 +152,9 @@ class HttpHandler(object):
                     "Message": "Operation completed succesfully."}
             else:
                 response_dictionary = response.json()
+                # Some special cases will be added to the responce dictionary from response header
+                if 'X-ePages-Cart-Token' in response.headers.keys():
+                    response_dictionary['X-ePages-Cart-Token'] = response.headers['X-ePages-Cart-Token']
         else:
             error_message = "HTTP-request failed. Response status was " + \
                 str(response.status_code)
