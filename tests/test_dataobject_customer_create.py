@@ -31,9 +31,11 @@ class TestStringMethods(BaseUnitTest):
         self.assertEqual(maria.customerNumber, '23')
         maria.internalNote = "What a customer!"
         self.assertEqual(maria.internalNote, 'What a customer!')
+        maria.billingAddress.doorCode = "Simsalabim"
         self.assertEqual(maria.is_valid(), True)
 
-        self.assertEqual(maria.billingAddress.get_dict(), {})
+        self.assertEqual(maria.billingAddress.get_dict(),
+                         {'doorCode': 'Simsalabim'})
 
     def test_0002_invalid_inputs(self):
         bad_lad = CustomerCreate()
