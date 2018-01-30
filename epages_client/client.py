@@ -90,6 +90,15 @@ class RestClient(object):
             if "query" not in params:
                 params["query"] = {}
 
+            # If user has set headers
+            if "headers" in params and params["headers"]:
+
+                # If headers are found in api_dict, merge headers in params with them
+                if "headers" in method["api_dict"] and method["api_dict"]["headers"]:
+                    method["api_dict"]["headers"].update(params["headers"])
+                else:
+                    method["api_dict"]["headers"] = params["headers"]
+
             # If parameters has a data object
             if "object" in params:
 
