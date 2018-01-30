@@ -49,7 +49,7 @@ class TestCustomerMethods(BaseUnitTest):
 
         self.params["object"] = customer
 
-        with self.assertRaises(RuntimeError) as e:
+        with self.assertRaises(ValueError) as e:
             response = self.client.add_customer(self.params)
 
     def test_004_add_customer(self):
