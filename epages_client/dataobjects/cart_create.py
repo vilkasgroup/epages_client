@@ -37,6 +37,7 @@ class CartCreate(DataObject):
             self._taxType = value
         else:
             raise ValueError('taxType must be GROSS, NET or NONE (str)')
+
     @property
     def locale(self):
         return self._locale

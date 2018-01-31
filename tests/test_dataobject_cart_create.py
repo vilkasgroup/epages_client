@@ -24,12 +24,12 @@ class TestProductMethods(BaseUnitTest):
     def test_001_set_basic_data(self):
 
         self.cart.currency = 'EUR'
-        self.cart.taxType = 'net'
+        self.cart.taxType = 'NET'
         self.cart.locale = 'fi_fi'
 
         right_answer = {
             'currency': 'EUR',
-            'taxType': 'net',
+            'taxType': 'NET',
             'locale': 'fi_fi'
         }
 
@@ -38,7 +38,7 @@ class TestProductMethods(BaseUnitTest):
     def test_002_add_Products(self):
 
         self.cart.currency = 'EUR'
-        self.cart.taxType = 'net'
+        self.cart.taxType = 'NET'
         self.cart.locale = 'fi_fi'
 
         product = ProductLineItemCreate()
@@ -48,7 +48,7 @@ class TestProductMethods(BaseUnitTest):
 
         right_answer = {
             'currency': 'EUR',
-            'taxType': 'net',
+            'taxType': 'NET',
             'locale': 'fi_fi',
             'lineItems': [
                 {
