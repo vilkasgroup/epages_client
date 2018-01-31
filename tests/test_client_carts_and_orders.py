@@ -34,6 +34,9 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
     # filename for saving lineItemId
     product_line_file = "cart_product_line_item_id.txt"
 
+    # filename for saving order id
+    order_id_file = "order_id.txt"
+
     # Code for a coupon
     coupun_code = 'TEST-CODE-ABC123'
 
@@ -264,4 +267,27 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         self.assertEqual(isinstance(response, dict), True)
 
         response = self.client.create_order(basic_params)
+        self.assertEqual(isinstance(response, dict), True)
+
+        self.save_resource(self.order_id_file, response['orderId'])
+
+    def test_1002_get_orders(self):
+        # Get orders
+
+        # find all finnish and euro orders
+        self.params['query'] = {
+            'currency': 'EUR',
+            'locale': 'fi_FI'
+        }
+
+        response = self.client.get_orders(self.params)
+        self.assertEqual(isinstance(response, dict), True)
+
+    def test_1003_get_the_order(self):
+        # Get the order created before
+
+        # Get order id
+        self.params["param1"] = self.get_resource(self.order_id_file)
+
+        response = self.client.get_order(self.params)
         self.assertEqual(isinstance(response, dict), True)
