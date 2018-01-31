@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 
 import os
 import time
+import unittest
 import uuid
 
 # import base class for unit testing
@@ -33,6 +34,10 @@ from epages_client.dataobjects.product_patch import ProductPatch
 from epages_client.dataobjects.product_slideshow_sequence_update import ProductSlideshowSequenceUpdate
 
 from random import shuffle
+
+skip_test = unittest.skipUnless(
+    os.environ.get('EPAGES_RUN_ALL_TESTS', False), 'Skipping test.'
+)
 
 
 class TestProductMethods(BaseUnitTest):
@@ -342,6 +347,7 @@ class TestProductMethods(BaseUnitTest):
         with self.assertRaises(RuntimeError) as e:
             variations = self.client.get_product_variations(self.params)
 
+    @skip_test
     def test_023_get_product_variations_correct_id(self):
 
         # Here the product id is hard-coded, because there
@@ -462,6 +468,7 @@ class TestProductMethods(BaseUnitTest):
         with self.assertRaises(RuntimeError) as e:
             attributes = self.client.get_product_custom_attributes(self.params)
 
+    @skip_test
     def test_037_get_product_custom_attributes_correct_id(self):
 
         # Get products
@@ -486,6 +493,7 @@ class TestProductMethods(BaseUnitTest):
         with self.assertRaises(RuntimeError) as e:
             lowest_price = self.client.get_product_lowest_price(self.params)
 
+    @skip_test
     def test_040_get_product_lowest_price_correct_id(self):
 
         # Here the product id is hard-coded, because there
