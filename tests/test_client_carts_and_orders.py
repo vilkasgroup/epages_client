@@ -82,153 +82,153 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
             "param2": ""
         }
 
-    # def test_0001_create_empty_cart(self):
-    #     # Create a cart without products
+    def test_0001_create_empty_cart(self):
+        # Create a cart without products
 
-    #     # Create a new cart
-    #     cart = CartCreate()
-    #     self.params["object"] = cart
-    #     response = self.client.add_cart(self.params)
-    #     self.assertEqual(isinstance(response, dict), True)
+        # Create a new cart
+        cart = CartCreate()
+        self.params["object"] = cart
+        response = self.client.add_cart(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
-    #     # Save cartId credentials to csv file
-    #     self.save_cart_credential(response)
+        # Save cartId credentials to csv file
+        self.save_cart_credential(response)
 
-    # def test_0002_get_cart(self):
-    #     # Returns a specific cart from a shop
+    def test_0002_get_cart(self):
+        # Returns a specific cart from a shop
 
-    #     # set credential of cart
-    #     self.params = self.add_cart_credential(self.params)
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
 
-    #     response = self.client.get_cart(self.params)
-    #     self.assertEqual(isinstance(response, dict), True)
+        response = self.client.get_cart(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
-    # def test_0003_add_product_line(self):
-    #     # Creates a product line item in a cart.
+    def test_0003_add_product_line(self):
+        # Creates a product line item in a cart.
 
-    #     # set credential of cart
-    #     self.params = self.add_cart_credential(self.params)
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
 
-    #     # Get one product
-    #     product_id = self.get_products()[0]['productId']
+        # Get one product
+        product_id = self.get_products()[0]['productId']
 
-    #     # Crate product order line
-    #     line = ProductLineItemCreate()
-    #     line.productId = product_id
-    #     line.quantity = 1
+        # Crate product order line
+        line = ProductLineItemCreate()
+        line.productId = product_id
+        line.quantity = 1
 
-    #     self.params["object"] = line
+        self.params["object"] = line
 
-    #     response = self.client.add_cart_line_item(self.params)
-    #     self.assertEqual(isinstance(response, dict), True)
+        response = self.client.add_cart_line_item(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
-    #     # We'll need lineItemId for updating and removing a product from the cart
-    #     self.save_resource(
-    #         self.product_line_file, response['lineItemContainer']['productLineItems'][0]['lineItemId'].strip())
+        # We'll need lineItemId for updating and removing a product from the cart
+        self.save_resource(
+            self.product_line_file, response['lineItemContainer']['productLineItems'][0]['lineItemId'].strip())
 
-    # def test_0004_update_product_line(self):
-    #     # Update quantity of product line
+    def test_0004_update_product_line(self):
+        # Update quantity of product line
 
-    #     line = ProductLineItemUpdate()
-    #     line.quantity = 5
+        line = ProductLineItemUpdate()
+        line.quantity = 5
 
-    #     # set credential of cart
-    #     self.params = self.add_cart_credential(self.params)
-    #     self.params["param2"] = self.get_resource(self.product_line_file)
-    #     self.params["object"] = line
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
+        self.params["param2"] = self.get_resource(self.product_line_file)
+        self.params["object"] = line
 
-    #     response = self.client.update_cart_line_item(self.params)
-    #     self.assertEqual(isinstance(response, dict), True)
+        response = self.client.update_cart_line_item(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
-    # def test_0005_add_coupon_to_cart(self):
-    #     # Applies a coupon code on a cart
+    def test_0005_add_coupon_to_cart(self):
+        # Applies a coupon code on a cart
 
-    #     # set credential of cart
-    #     self.params = self.add_cart_credential(self.params)
-    #     # x-www-form-urlencoded
-    #     self.params["data"] = {'code': self.coupun_code}
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
+        # x-www-form-urlencoded
+        self.params["data"] = {'code': self.coupun_code}
 
-    #     response = self.client.add_coupon(self.params)
-    #     self.assertEqual(isinstance(response, dict), True)
+        response = self.client.add_coupon(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
-    #     self.save_resource(
-    #         self.coupon_line_file, response['lineItemContainer']['couponLineItem']['couponLineItemId'].strip())
+        self.save_resource(
+            self.coupon_line_file, response['lineItemContainer']['couponLineItem']['couponLineItemId'].strip())
 
-    # def test_0005_delete_coupon_from_cart(self):
-    #     # Deletes a coupon from a cart
+    def test_0005_delete_coupon_from_cart(self):
+        # Deletes a coupon from a cart
 
-    #     # set credential of cart
-    #     self.params = self.add_cart_credential(self.params)
-    #     self.params["param2"] = self.get_resource(self.coupon_line_file)
-    #     # x-www-form-urlencoded
-    #     self.params["data"] = {'code': self.coupun_code}
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
+        self.params["param2"] = self.get_resource(self.coupon_line_file)
+        # x-www-form-urlencoded
+        self.params["data"] = {'code': self.coupun_code}
 
-    #     response = self.client.delete_coupon(self.params)
-    #     self.assertEqual(isinstance(response, dict), True)
+        response = self.client.delete_coupon(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
-    # def test_0006_delete_product_line(self):
-    #     # Removes a product line item from a cart.
+    def test_0006_delete_product_line(self):
+        # Removes a product line item from a cart.
 
-    #     # set credentials of the cart
-    #     self.params = self.add_cart_credential(self.params)
-    #     self.params["param2"] = self.get_resource(self.product_line_file)
+        # set credentials of the cart
+        self.params = self.add_cart_credential(self.params)
+        self.params["param2"] = self.get_resource(self.product_line_file)
 
-    #     response = self.client.delete_cart_line_item(self.params)
-    #     self.assertEqual(isinstance(response, dict), True)
+        response = self.client.delete_cart_line_item(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
-    # def test_0007_add_billing_address(self):
-    #     # Modifies the billing address for a cart.
+    def test_0007_add_billing_address(self):
+        # Modifies the billing address for a cart.
 
-    #     billing_address = Address()
-    #     billing_address.firstName = "Äijö"
-    #     billing_address.lastName = "Äälinen"
-    #     billing_address.street = "Pellavatehtaankatu 19"
-    #     billing_address.zipCode = "33210"
-    #     billing_address.city = "Tampere"
-    #     billing_address.country = "FI"
-    #     billing_address.emailAddress = "aijo.aalinen@vilkas.invalid"
+        billing_address = Address()
+        billing_address.firstName = "Äijö"
+        billing_address.lastName = "Äälinen"
+        billing_address.street = "Pellavatehtaankatu 19"
+        billing_address.zipCode = "33210"
+        billing_address.city = "Tampere"
+        billing_address.country = "FI"
+        billing_address.emailAddress = "aijo.aalinen@vilkas.invalid"
 
-    #     # set credentials of the cart
-    #     self.params = self.add_cart_credential(self.params)
-    #     self.params["object"] = billing_address
+        # set credentials of the cart
+        self.params = self.add_cart_credential(self.params)
+        self.params["object"] = billing_address
 
-    #     response = self.client.update_billing_address(self.params)
-    #     self.assertEqual(isinstance(response, dict), True)
+        response = self.client.update_billing_address(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
-    # def test_0008_delete_billing_address(self):
-    #     # set credentials of the cart
-    #     self.params = self.add_cart_credential(self.params)
+    def test_0008_delete_billing_address(self):
+        # set credentials of the cart
+        self.params = self.add_cart_credential(self.params)
 
-    #     response = self.client.delete_billing_address(self.params)
-    #     self.assertEqual(isinstance(response, dict), True)
+        response = self.client.delete_billing_address(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
-    # def test_0009_add_shipping_address(self):
-    #     # Modifies the shipping address for a cart.
+    def test_0009_add_shipping_address(self):
+        # Modifies the shipping address for a cart.
 
-    #     shipping_address = Address()
-    #     shipping_address.firstName = "Лев"
-    #     shipping_address.lastName = "Толстой"
-    #     shipping_address.street = "Pellavatehtaankatu 19"
-    #     shipping_address.zipCode = "33210"
-    #     shipping_address.city = "Tampere"
-    #     shipping_address.country = "FI"
-    #     shipping_address.emailAddress = "leo.tolstoy@vilkas.invalid"
-    #     shipping_address.gender = "MALE"
-    #     shipping_address.jobTitle = "writer"
+        shipping_address = Address()
+        shipping_address.firstName = "Лев"
+        shipping_address.lastName = "Толстой"
+        shipping_address.street = "Pellavatehtaankatu 19"
+        shipping_address.zipCode = "33210"
+        shipping_address.city = "Tampere"
+        shipping_address.country = "FI"
+        shipping_address.emailAddress = "leo.tolstoy@vilkas.invalid"
+        shipping_address.gender = "MALE"
+        shipping_address.jobTitle = "writer"
 
-    #     # set credentials of the cart
-    #     self.params = self.add_cart_credential(self.params)
-    #     self.params["object"] = shipping_address
+        # set credentials of the cart
+        self.params = self.add_cart_credential(self.params)
+        self.params["object"] = shipping_address
 
-    #     response = self.client.update_shipping_address(self.params)
-    #     self.assertEqual(isinstance(response, dict), True)
+        response = self.client.update_shipping_address(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
-    # def test_0010_shipping_shipping_address(self):
-    #     # set credentials of the cart
-    #     self.params = self.add_cart_credential(self.params)
+    def test_0010_shipping_shipping_address(self):
+        # set credentials of the cart
+        self.params = self.add_cart_credential(self.params)
 
-    #     response = self.client.delete_shipping_address(self.params)
-    #     self.assertEqual(isinstance(response, dict), True)
+        response = self.client.delete_shipping_address(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
     def test_1001_create_order(self):
         # create a cart
@@ -295,14 +295,25 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
 
     def test_1003_update_order(self):
         # update the order created before
+
         order = OrderPatch()
         order.billingAddress.emailAddress = "my-new@email.address.invalid"
         order.billingAddress.firstName = "David"
         order.billingAddress.lastName = "Mattson"
+        order.billingAddress.lastName = "MALE"
 
         # Get order id
         self.params["param1"] = self.get_resource(self.order_id_file)
         self.params["object"] = order
 
         response = self.client.update_order(self.params)
+        self.assertEqual(isinstance(response, dict), True)
+
+    def test_1004_get_order_documents(self):
+        # Returns finalized invoice and credit note order documents by orderId.
+
+        # Get order id
+        self.params["param1"] = self.get_resource(self.order_id_file)
+
+        response = self.client.get_order_documents(self.params)
         self.assertEqual(isinstance(response, dict), True)
