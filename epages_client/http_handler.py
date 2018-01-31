@@ -62,8 +62,13 @@ class HttpHandler(object):
         return self._request(requests.post, dict_data)
 
     def put(self, dict_data):
-        # Add content type header
-        self._default_headers["Content-Type"] = "application/json"
+        # If headers are given in dict_data, merge them with current headers
+        if "headers" in dict_data and dict_data["headers"]:
+            self._default_headers.update(dict_data["headers"])
+
+        # If there isn't already a content type header, add it
+        if "Content-Type" not in self._default_headers:
+            self._default_headers["Content-Type"] = "application/json"
 
         """Do PUT request"""
         return self._request(requests.put, dict_data)

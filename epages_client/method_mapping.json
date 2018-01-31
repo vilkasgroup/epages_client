@@ -207,6 +207,14 @@
             "path": "/orders"
         }
     },
+    "add_billing_address": {
+        "method": "put",
+        "require": ["param1"],
+        "path2": "/billing-address",
+        "api_dict": {
+            "path": "/carts"
+        }
+    },
     "get_shop_info": {
         "method": "get",
         "api_dict": {

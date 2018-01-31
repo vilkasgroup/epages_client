@@ -18,6 +18,7 @@ from epages_client.client import RestClient
 # import Dataobjects
 from epages_client.dataobjects.cart_create import CartCreate
 from epages_client.dataobjects.product_line_item_create import ProductLineItemCreate
+from epages_client.dataobjects.address import Address
 
 
 class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
@@ -172,4 +173,23 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         self.params["param2"] = self.get_resource(self.product_line_file)
 
         response = self.client.delete_cart_line_item(self.params)
+        self.assertEqual(isinstance(response, dict), True)
+
+    def test_0007_add_billing_address(self):
+        # Modifies the billing address for a cart.
+
+        billing_address = Address()
+        billing_address.firstName = "Äijö"
+        billing_address.lastName = "Äälinen"
+        billing_address.street = "Pellavatehtaankatu 19"
+        billing_address.zipCode = "33210"
+        billing_address.city = "Tampere"
+        billing_address.country = "FI"
+        billing_address.emailAddress = "aijo.aalinen@vilkas.invalid"
+
+        # set credentials of the cart
+        self.params = self.add_cart_credential(self.params)
+        self.params["object"] = billing_address
+
+        response = self.client.add_billing_address(self.params)
         self.assertEqual(isinstance(response, dict), True)
