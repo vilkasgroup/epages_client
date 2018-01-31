@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 # import the Httphandler Class
-from .httphandler import HttpHandler
+from .http_handler import HttpHandler
 
 # import the Product class from dataobjects
 from .dataobjects.data_object import DataObject
@@ -63,7 +63,7 @@ class RestClient(object):
                 # Check the sent parameters
                 method = self.check_params(method, params)
 
-                # Get the needed method function from httphandler
+                # Get the needed method function from HttpHandler
                 method_func = getattr(self.http, method["method"])
 
                 # Perform the API call

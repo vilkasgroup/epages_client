@@ -69,8 +69,13 @@ class HttpHandler(object):
         return self._request(requests.put, dict_data)
 
     def delete(self, dict_data):
-        # Add content type header
-        self._default_headers["Content-Type"] = "application/json"
+        # If headers are given in dict_data, merge them with current headers
+        if "headers" in dict_data and dict_data["headers"]:
+            self._default_headers.update(dict_data["headers"])
+
+        # If there isn't already a content type header, add it
+        if "Content-Type" not in self._default_headers:
+            self._default_headers["Content-Type"] = "application/json"
 
         """Do delete HTTP-request"""
         return self._request(requests.delete, dict_data)
@@ -133,7 +138,7 @@ class HttpHandler(object):
         path, query, data = self._check_input_dictionary(dict_data)
         headers = self._default_headers
         request_url = self.api_url + path
-        logging.debug('request_url: ' + request_url)
+        logging.debug('HttpHandler request_url: ' + request_url)
 
         # If use_data is specified for this particular request, the data must
         # be sent using the data argument.
@@ -161,7 +166,11 @@ class HttpHandler(object):
                     "Message": "Operation completed succesfully."}
             else:
                 response_dictionary = response.json()
+                # Some special cases will be added to the responce dictionary from response header
+                if 'X-ePages-Cart-Token' in response.headers.keys():
+                    response_dictionary['X-ePages-Cart-Token'] = response.headers['X-ePages-Cart-Token']
         else:
+            logging.debug("HttpHandler error: " + response.text)
             error_message = "HTTP-request failed. Response status was " + \
                 str(response.status_code)
             logging.error(error_message)
