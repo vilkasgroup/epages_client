@@ -29,6 +29,9 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
     # filename for saving couponLineItemId
     coupon_line_file = "cart_coupon_line.txt"
 
+    # filename for saving lineItemId
+    product_line_file = "cart_product_line_item_id.txt"
+
     # Code for a coupon
     coupun_code = 'TEST-CODE-ABC123'
 
@@ -131,6 +134,10 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         response = self.client.add_cart_line_item(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
+        # We'll need lineItemId for removing a product from the cart
+        self.save_resource(
+            self.product_line_file, response['lineItemContainer']['productLineItems'][0]['lineItemId'].strip())
+
     def test_0005_add_coupon_to_cart(self):
         # Applies a coupon code on a cart
 
@@ -154,6 +161,15 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         # x-www-form-urlencoded
         self.params["data"] = {'code': self.coupun_code}
 
-        pprint(self.params)
         response = self.client.delete_coupon(self.params)
+        self.assertEqual(isinstance(response, dict), True)
+
+    def test_0006_remove_product_line(self):
+        # Removes a product line item from a cart.
+
+        # set credentials of the cart
+        self.params = self.add_cart_credential(self.params)
+        self.params["param2"] = self.get_resource(self.product_line_file)
+
+        response = self.client.delete_cart_line_item(self.params)
         self.assertEqual(isinstance(response, dict), True)
