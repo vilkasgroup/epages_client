@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 import os
 import time
 import uuid
+import time
 from pprint import pprint
 
 # import base class for unit testing
@@ -250,6 +251,8 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         item2.quantity = 4
         cart.lineItems.add(item2)
 
+        time.sleep(1)
+
         # send to a shop
         self.params["object"] = cart
         response = self.client.add_cart(self.params)
@@ -266,8 +269,12 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         params = {'object': buyer}
         params.update(basic_params)
 
+        time.sleep(1)
+
         response = self.client.update_billing_address(params)
         self.assertEqual(isinstance(response, dict), True)
+
+        time.sleep(1)
 
         response = self.client.create_order(basic_params)
         self.assertEqual(isinstance(response, dict), True)
