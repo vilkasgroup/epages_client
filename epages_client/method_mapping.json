@@ -184,7 +184,7 @@
         "require": ["param1"],
         "path2": "/line-items"
     },
-    "add_order": {
+    "create_order": {
         "method": "post",
         "require": ["param1"],
         "api_dict": {
