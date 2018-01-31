@@ -63,3 +63,7 @@ target/
 
 # pyenv python configuration file
 .python-version
+
+# test resources
+/tests/resources/*.txt
+/tests/resources/*.csv

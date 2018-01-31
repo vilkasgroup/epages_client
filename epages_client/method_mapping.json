@@ -150,13 +150,39 @@
             "path": "/carts"
         }
     },
+    "add_coupon": {
+        "method": "post",
+        "api_dict": {
+            "headers": {
+                "Accept": "*/*",
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            "use_data": 1,
+            "path": "/carts"
+        },
+        "require": ["param1"],
+        "path2": "/coupon"
+    },
+    "delete_coupon": {
+        "method": "delete",
+        "api_dict": {
+            "headers": {
+                "Accept": "*/*",
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            "use_data": 1,
+            "path": "/carts"
+        },
+        "require": ["param1", "param2"],
+        "path2": "/coupon"
+    },
     "add_cart_line_item": {
         "method": "post",
         "api_dict": {
             "path": "/carts"
         },
         "require": ["param1"],
-        "path2": "line-items"
+        "path2": "/line-items"
     },
     "add_order": {
         "method": "post",

@@ -23,48 +23,36 @@ from epages_client.dataobjects.product_line_item_create import ProductLineItemCr
 class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
     '''A class for testing order related methods on RestClient class'''
 
-    # Get the directory where this file is located
-    dir_path = os.path.dirname(os.path.realpath(__file__))
+    # filename for saving cart credential
+    cart_file = "cart_credential.csv"
 
-    # Set the resources directory where id files and test image are located
-    resources = os.path.join(dir_path, "resources")
+    # filename for saving couponLineItemId
+    coupon_line_file = "cart_coupon_line.txt"
 
-    # If the resources directory doesn't exist, raise an error
-    if not os.path.exists(resources):
-        raise OSError("Resources directory not found.")
+    # Code for a coupon
+    coupun_code = 'TEST-CODE-ABC123'
 
-    # Add cart.csv to the resources path
-    cart_file = os.path.join(resources, "cart_resource.csv")
+    def add_cart_credential(self, params):
+        '''This function adds cart token and cart id to params from csv file.'''
 
-    def get_cart_resource(self):
-        '''A function to get cart token and cart id from csv file.'''
+        content = self.get_resource(self.cart_file)
 
-        try:
-            fh = open(self.cart_file, "r")
-            line = fh.read()
-            fh.close()
-        except FileNotFoundError:
-            raise FileNotFoundError("Cart file not found.")
+        ids = content.split(";")
 
-        ids = line.split(";")
-        return {
-            'token': ids[0],
-            'id': ids[1]
-        }
+        params.update({
+            'param1': ids[0],
+            'headers': {'X-ePages-Cart-Token': ids[1]}
+        })
 
-    def save_cart_resource(self, response):
-        '''Function to save cart token and cart_id to a text-file'''
+        return params
 
-        cart_token = response['X-ePages-Cart-Token']
-        cart_id = response['cartId']
+    def save_cart_credential(self, response):
+        '''Function to save cart token and cart_id to csv-file'''
 
-        try:
-            fh = open(self.cart_file, "w")
-            fh.write("%s;%s" % (cart_token, cart_id))
-            fh.close()
-        except IOError:
-            print("Cart file couldn't be created.")
+        content = "%s;%s" % (
+            response['X-ePages-Cart-Token'], response['cartId'])
 
+        self.save_resource(self.cart_file, content)
 
     def get_first_product(self):
         products = self.client.get_products({
@@ -101,43 +89,71 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         self.params["object"] = cart
 
         response = self.client.add_cart(self.params)
-
         self.assertEqual(isinstance(response, dict), True)
 
     def test_0002_create_empty_cart(self):
+        # Create a cart without products
+
+        # Create a new cart
         cart = CartCreate()
         self.params["object"] = cart
         response = self.client.add_cart(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
-        # Save cartId details to text file
-        self.save_cart_resource(response)
+        # Save cartId credentials to csv file
+        self.save_cart_credential(response)
 
-    # def test_0002_get_cart(self):
-    #     cart_ids = self.get_cart_resource()
-    #     pprint(cart_ids)
-    #     self.params['param1'] = cart_ids['id']
-    #     self.params['headers'] = {'X-ePages-Cart-Token': cart_ids['token']}
+    def test_0002_get_cart(self):
+        # Returns a specific cart from a shop
 
-    #     response = self.client.get_cart(self.params)
-    #     self.assertEqual(isinstance(response, dict), True)
-    #     pprint(response)
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
 
-    def test_0005_add_product_line(self):
-        # Get created cart
-        cart_ids = self.get_cart_resource()
-        self.params["param1"] = cart_ids['id']
-        self.params["headers"] = {'X-epages-Cart-Token': cart_ids['token']}
+        response = self.client.get_cart(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
-        # Get a product
+    def test_0003_add_product_line(self):
+        # Creates a product line item in a cart.
+
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
+
+        # Get one product
         product_id = self.get_first_product()['productId']
 
+        # Crate product order line
         line = ProductLineItemCreate()
         line.productId = product_id
         line.quantity = 1
 
         self.params["object"] = line
-        print('A!'*50, 'self.params["param1"]: ', self.params["param1"], 'self.params["headers"]: ', self.params["headers"], 'line: ', line)
-        self.client.add_cart_line_item(self.params)
 
+        response = self.client.add_cart_line_item(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
+    def test_0005_add_coupon_to_cart(self):
+        # Applies a coupon code on a cart
+
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
+        # x-www-form-urlencoded
+        self.params["data"] = {'code': self.coupun_code}
+
+        response = self.client.add_coupon(self.params)
+        self.assertEqual(isinstance(response, dict), True)
+
+        self.save_resource(
+            self.coupon_line_file, response['lineItemContainer']['couponLineItem']['couponLineItemId'].strip())
+
+    def test_0005_delete_coupon_from_cart(self):
+        # Deletes a coupon from a cart
+
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
+        self.params["param2"] = self.get_resource(self.coupon_line_file)
+        # x-www-form-urlencoded
+        self.params["data"] = {'code': self.coupun_code}
+
+        pprint(self.params)
+        response = self.client.delete_coupon(self.params)
+        self.assertEqual(isinstance(response, dict), True)
