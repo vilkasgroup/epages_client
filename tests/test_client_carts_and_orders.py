@@ -20,6 +20,7 @@ from epages_client.dataobjects.cart_create import CartCreate
 from epages_client.dataobjects.product_line_item_create import ProductLineItemCreate
 from epages_client.dataobjects.product_line_item_update import ProductLineItemUpdate
 from epages_client.dataobjects.address import Address
+from epages_client.dataobjects.order_patch import OrderPatch
 
 
 class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
@@ -290,4 +291,18 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         self.params["param1"] = self.get_resource(self.order_id_file)
 
         response = self.client.get_order(self.params)
+        self.assertEqual(isinstance(response, dict), True)
+
+    def test_1003_update_order(self):
+        # update the order created before
+        order = OrderPatch()
+        order.billingAddress.emailAddress = "my-new@email.address.invalid"
+        order.billingAddress.firstName = "David"
+        order.billingAddress.lastName = "Mattson"
+
+        # Get order id
+        self.params["param1"] = self.get_resource(self.order_id_file)
+        self.params["object"] = order
+
+        response = self.client.update_order(self.params)
         self.assertEqual(isinstance(response, dict), True)
