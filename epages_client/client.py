@@ -73,7 +73,7 @@ class RestClient(object):
 
             return build_request
         else:
-            print("NotDefined")
+            print("Error: command '%s' not found." % (attr,))
 
     def check_params(self, method=None, params=None):
         '''
@@ -119,11 +119,11 @@ class RestClient(object):
                     params["data"] = obj.get_dict()
 
             # If query has not currency or locale, use setted ones
-            if "currency" not in params["query"] and self._currency != "":
-                params["query"]["currency"] = self._currency
+            if "currency" not in params["query"] and self.currency != "":
+                params["query"]["currency"] = self.currency
 
-            if "locale" not in params["query"] and self._locale != "":
-                params["query"]["locale"] = self._locale
+            if "locale" not in params["query"] and self.locale != "":
+                params["query"]["locale"] = self.locale
 
             # Check if there's variable requirements and loop them
             if "require" in method:
@@ -161,15 +161,6 @@ class RestClient(object):
             method["api_dict"]["query"] = params["query"]
 
             return method
-
-    def commands(self):
-        '''Print available commands for user'''
-
-        print("Available commands are\n")
-
-        # Loop keys in self.mapping, sorted alphabetically
-        for key in sorted(self.mapping):
-            print(key)
 
     @property
     def currency(self):

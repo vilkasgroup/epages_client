@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import os
+import unittest
 
 # import the RestClient class
 from epages_client.client import RestClient
@@ -14,6 +15,10 @@ from epages_client.dataobjects.content_page import ContentPage
 
 # import base class for unit testing
 from .base_unit_test import BaseUnitTest
+
+skip_test = unittest.skipUnless(
+    os.environ.get('EPAGES_RUN_ALL_TESTS', False), 'Skipping test.'
+)
 
 
 class TestLegalMethods(BaseUnitTest):
@@ -55,6 +60,7 @@ class TestLegalMethods(BaseUnitTest):
 
         self.assertEqual(isinstance(terms_and_conditions, dict), True)
 
+    @skip_test
     def test_005_get_rights_of_withdrawal(self):
 
         rights_of_withdrawal = self.client.get_rights_of_withdrawal(
@@ -160,6 +166,7 @@ class TestLegalMethods(BaseUnitTest):
         with self.assertRaises(ValueError) as e:
             response = self.client.update_rights_of_withdrawal(self.params)
 
+    @skip_test
     def test_016_update_rights_of_withdrawal(self):
 
         self.params["query"]["locale"] = "en_GB"
