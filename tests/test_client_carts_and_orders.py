@@ -237,14 +237,16 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         cart.locale = 'fi_fi'
         cart.taxType = 'NET'
 
+        products = self.get_products()
+
         # Add products to the cart
         item1 = ProductLineItemCreate()
-        item1.productId = self.get_products()[0]['productId']
+        item1.productId = products[0]['productId']
         item1.quantity = 2
         cart.lineItems.add(item1)
 
         item2 = ProductLineItemCreate()
-        item2.productId = self.get_products()[1]['productId']
+        item2.productId = products[1]['productId']
         item2.quantity = 4
         cart.lineItems.add(item2)
 
