@@ -215,6 +215,14 @@
             "path": "/carts"
         }
     },
+    "delete_billing_address": {
+        "method": "delete",
+        "api_dict": {
+            "path": "/carts"
+        },
+        "require": ["param1"],
+        "path2": "/billing-address"
+    },
     "get_shop_info": {
         "method": "get",
         "api_dict": {

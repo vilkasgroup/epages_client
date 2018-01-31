@@ -165,7 +165,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         response = self.client.delete_coupon(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
-    def test_0006_remove_product_line(self):
+    def test_0006_delete_product_line(self):
         # Removes a product line item from a cart.
 
         # set credentials of the cart
@@ -192,4 +192,11 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         self.params["object"] = billing_address
 
         response = self.client.add_billing_address(self.params)
+        self.assertEqual(isinstance(response, dict), True)
+
+    def test_0008_delete_billing_address(self):
+        # set credentials of the cart
+        self.params = self.add_cart_credential(self.params)
+
+        response = self.client.delete_billing_address(self.params)
         self.assertEqual(isinstance(response, dict), True)
