@@ -18,6 +18,7 @@ from epages_client.client import RestClient
 # import Dataobjects
 from epages_client.dataobjects.cart_create import CartCreate
 from epages_client.dataobjects.product_line_item_create import ProductLineItemCreate
+from epages_client.dataobjects.product_line_item_update import ProductLineItemUpdate
 from epages_client.dataobjects.address import Address
 
 
@@ -135,9 +136,23 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         response = self.client.add_cart_line_item(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
-        # We'll need lineItemId for removing a product from the cart
+        # We'll need lineItemId for updating and removing a product from the cart
         self.save_resource(
             self.product_line_file, response['lineItemContainer']['productLineItems'][0]['lineItemId'].strip())
+
+    def test_0004_update_product_line(self):
+        # Update quantity of product line
+
+        line = ProductLineItemUpdate()
+        line.quantity = 5
+
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
+        self.params["param2"] = self.get_resource(self.product_line_file)
+        self.params["object"] = line
+
+        response = self.client.update_cart_line_item(self.params)
+        self.assertEqual(isinstance(response, dict), True)
 
     def test_0005_add_coupon_to_cart(self):
         # Applies a coupon code on a cart
@@ -221,8 +236,6 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
 
         response = self.client.update_shipping_address(self.params)
         self.assertEqual(isinstance(response, dict), True)
-
-        pprint(response)
 
     def test_0010_shipping_shipping_address(self):
         # set credentials of the cart

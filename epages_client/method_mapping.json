@@ -184,6 +184,14 @@
         "require": ["param1"],
         "path2": "/line-items"
     },
+    "update_cart_line_item": {
+        "method": "put",
+        "require": ["param1", "param2"],
+        "path2": "/line-items",
+        "api_dict" : {
+            "path": "/carts"
+        }
+    },
     "delete_cart_line_item": {
         "method": "delete",
         "api_dict": {
