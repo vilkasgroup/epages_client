@@ -207,7 +207,7 @@
             "path": "/orders"
         }
     },
-    "add_billing_address": {
+    "update_billing_address": {
         "method": "put",
         "require": ["param1"],
         "path2": "/billing-address",
@@ -222,6 +222,22 @@
         },
         "require": ["param1"],
         "path2": "/billing-address"
+    },
+    "update_shipping_address": {
+        "method": "put",
+        "require": ["param1"],
+        "path2": "/shipping-address",
+        "api_dict": {
+            "path": "/carts"
+        }
+    },
+    "delete_shipping_address": {
+        "method": "delete",
+        "api_dict": {
+            "path": "/carts"
+        },
+        "require": ["param1"],
+        "path2": "/shipping-address"
     },
     "get_shop_info": {
         "method": "get",

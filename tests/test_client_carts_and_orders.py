@@ -191,7 +191,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         self.params = self.add_cart_credential(self.params)
         self.params["object"] = billing_address
 
-        response = self.client.add_billing_address(self.params)
+        response = self.client.update_billing_address(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
     def test_0008_delete_billing_address(self):
@@ -199,4 +199,34 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         self.params = self.add_cart_credential(self.params)
 
         response = self.client.delete_billing_address(self.params)
+        self.assertEqual(isinstance(response, dict), True)
+
+    def test_0009_add_shipping_address(self):
+        # Modifies the shipping address for a cart.
+
+        shipping_address = Address()
+        shipping_address.firstName = "Лев"
+        shipping_address.lastName = "Толстой"
+        shipping_address.street = "Pellavatehtaankatu 19"
+        shipping_address.zipCode = "33210"
+        shipping_address.city = "Tampere"
+        shipping_address.country = "FI"
+        shipping_address.emailAddress = "leo.tolstoy@vilkas.invalid"
+        shipping_address.gender = "MALE"
+        shipping_address.jobTitle = "writer"
+
+        # set credentials of the cart
+        self.params = self.add_cart_credential(self.params)
+        self.params["object"] = shipping_address
+
+        response = self.client.update_shipping_address(self.params)
+        self.assertEqual(isinstance(response, dict), True)
+
+        pprint(response)
+
+    def test_0010_shipping_shipping_address(self):
+        # set credentials of the cart
+        self.params = self.add_cart_credential(self.params)
+
+        response = self.client.delete_shipping_address(self.params)
         self.assertEqual(isinstance(response, dict), True)
