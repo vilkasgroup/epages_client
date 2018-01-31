@@ -161,7 +161,6 @@ class TestLegalMethods(BaseUnitTest):
 
         self.assertEqual(isinstance(response, dict), True)
 
-    @skip_test
     def test_015_update_rights_of_withdrawal_no_locale(self):
 
         with self.assertRaises(ValueError) as e:
