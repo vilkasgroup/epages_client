@@ -11,7 +11,7 @@ from epages_client.client import RestClient
 from epages_client.dataobjects.customer_create import CustomerCreate
 
 # Import the customer patch class
-from epages_client.dataobjects.customer_patch import CustomerPatch
+from epages_client.dataobjects.customer_patch import CustomerUpdate
 
 # import base class for unit testing
 from .base_unit_test import BaseUnitTest
@@ -132,7 +132,7 @@ class TestCustomerMethods(BaseUnitTest):
 
         self.params["param1"] = customer_id
 
-        customer = CustomerPatch()
+        customer = CustomerUpdate()
         customer.internalNote = "This customer whines a lot."
 
         self.params["object"] = customer

@@ -4,11 +4,11 @@ from .customer_create import CustomerCreate
 from .enum_fetch_operator import FetchOperator
 
 
-class CustomerPatch(CustomerCreate):
+class CustomerUpdate(CustomerCreate):
     '''Data object for updating a customer to ePages webshop'''
 
     def __init__(self):
-        super(CustomerPatch, self).__init__()
+        super(CustomerUpdate, self).__init__()
         self.legals = {
             '/customerNumber': (FetchOperator.ADD,),
             '/billingAddress': (FetchOperator.ADD, FetchOperator.REMOVE),
