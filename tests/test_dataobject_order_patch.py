@@ -5,7 +5,7 @@ from pprint import pprint
 # import the package
 import epages_client
 
-from epages_client.dataobjects.order_patch import OrderPatch
+from epages_client.dataobjects.order_patch import OrderUpdate
 from epages_client.dataobjects.remove_value import RemoveValue
 
 # import base class for unit testing
@@ -17,7 +17,7 @@ class TestStringMethods(BaseUnitTest):
         pass
 
     def test_0001_remove__values(self):
-        order = OrderPatch()
+        order = OrderUpdate()
         order.customerComment = RemoveValue()
         order.internalNote = RemoveValue()
         order.viewedOn = RemoveValue()
@@ -59,7 +59,7 @@ class TestStringMethods(BaseUnitTest):
         self.assert_count_items_equal(order.get_patch(), right_answer)
 
     def test_0002_change_address(self):
-        order = OrderPatch()
+        order = OrderUpdate()
         order.shippingAddress.street = "Finlaysoninkuja 19"
         order.shippingAddress.zipCode = "33210"
         order.shippingAddress.city = "TAMPERE"
@@ -79,7 +79,7 @@ class TestStringMethods(BaseUnitTest):
         self.assertEqual(order.get_patch(), right_answer)
 
     def test_0003_illegals(self):
-        order = OrderPatch()
+        order = OrderUpdate()
         with self.assertRaises(TypeError) as e:
             order.orderNumber = RemoveValue()
 
