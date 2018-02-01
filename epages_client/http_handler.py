@@ -25,75 +25,52 @@ class HttpHandler(object):
         self.client_secret = client_secret
         self.beyond = beyond
 
-        self._set_headers()
-
         # Remove trailing / from api_url
         if self.api_url.endswith(HttpHandler._URI_separator):
             self.api_url = self.api_url[:-1]
 
     def get(self, dict_data):
 
-        # If headers are given in dict_data, merge them with current headers
-        if "headers" in dict_data and dict_data["headers"]:
-            self._default_headers.update(dict_data["headers"])
+        # Set headers
+        self._set_headers(dict_data, "get")
 
-        # If there isn't already a content type header, add it
-        if "Content-Type" not in self._default_headers:
-            self._default_headers["Content-Type"] = "application/json"
-
-        """Do GET request"""
+        # Do the GET request
         return self._request(requests.get, dict_data)
 
     def post(self, dict_data):
 
-        # If headers are given in dict_data, merge them with current headers
-        # Note: In all current post method situations there are custom Content-Type
-        # given. This if-else here assumes, that Content-Type is always given with
-        # the custom headers and it's only set in the else section.
-        if "headers" in dict_data and dict_data["headers"]:
-            self._default_headers.update(dict_data["headers"])
-        # If there isn't file going to be uploaded, set the default
-        # content type header. For file uploads there should be none.
-        elif "use_files" not in dict_data:
-            # Add default content type header
-            self._default_headers["Content-Type"] = "application/json"
+        # Set headers
+        self._set_headers(dict_data, "post")
 
-        """Do POST request"""
+        # Do the POST request
         return self._request(requests.post, dict_data)
 
     def put(self, dict_data):
-        # If headers are given in dict_data, merge them with current headers
-        if "headers" in dict_data and dict_data["headers"]:
-            self._default_headers.update(dict_data["headers"])
 
-        # If there isn't already a content type header, add it
-        if "Content-Type" not in self._default_headers:
-            self._default_headers["Content-Type"] = "application/json"
+        # Set headers
+        self._set_headers(dict_data, "put")
 
-        """Do PUT request"""
+        # Do the PUT request
         return self._request(requests.put, dict_data)
 
     def delete(self, dict_data):
-        # If headers are given in dict_data, merge them with current headers
-        if "headers" in dict_data and dict_data["headers"]:
-            self._default_headers.update(dict_data["headers"])
 
-        # If there isn't already a content type header, add it
-        if "Content-Type" not in self._default_headers:
-            self._default_headers["Content-Type"] = "application/json"
+        # Set headers
+        self._set_headers(dict_data, "delete")
 
         """Do delete HTTP-request"""
         return self._request(requests.delete, dict_data)
 
     def patch(self, dict_data):
-        # Add content type header
-        self._default_headers["Content-Type"] = "application/json-patch+json"
 
-        """Do patch HTTP-patch"""
+        # Set headers
+        self._set_headers(dict_data, "patch")
+
+        # Do the patch HTTP-patch
         return self._request(requests.patch, dict_data)
 
-    def _set_headers(self):
-        """Sets default headers"""
+    def _set_headers(self, dict_data, method):
+        """Sets headers"""
 
         if self.beyond:
             self._default_headers["Accept"] = "application/hal+json"
@@ -103,6 +80,22 @@ class HttpHandler(object):
         # If token is set, add it to the Authorization header
         if self.token != "":
             self._default_headers["Authorization"] = "Bearer " + self.token
+
+        # By default, content-type header is "application/json"
+        self._default_headers["Content-Type"] = "application/json"
+
+        # With patch method the content-type header is a bit different
+        if method == "patch":
+            self._default_headers["Content-Type"] = "application/json-patch+json"
+
+        # If there's file going to be uploaded, remove content-type header
+        if "use_files" in dict_data:
+            self._default_headers.pop("Content-Type", None)
+
+        # Finally, if there's user defined headers in dict_data,
+        # merge them with current headers
+        if "headers" in dict_data and dict_data["headers"]:
+            self._default_headers.update(dict_data["headers"])
 
     def _check_input_dictionary(self, dict_data):
         '''Check that path, query and data are set in request dictionary and return values as list
