@@ -6,7 +6,7 @@ from .list_of_objects import ListOfObjects
 from .address import Address
 
 
-class OrderPatch(DataObject):
+class OrderUpdate(DataObject):
     """Dataobject for updating order"""
 
     def __init__(self):

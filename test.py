@@ -1,6 +1,6 @@
 from epages_client.client import RestClient
 from epages_client.dataobjects.product_create import ProductCreate
-from epages_client.dataobjects.product_patch import ProductPatch
+from epages_client.dataobjects.product_update import ProductUpdate
 from epages_client.dataobjects.category_create import CategoryCreate
 from epages_client.dataobjects.category_update import CategoryUpdate
 from epages_client.dataobjects.category_sequence_update import CategorySequenceUpdate
@@ -206,7 +206,7 @@ pprint(response)
 
 # pprint(response)
 
-#product_patch = ProductPatch()
+#product_patch = ProductUpdate()
 
 #product_patch.productImage = "test.jpg"
 # product_patch.name = "Chicagon hattu"
@@ -219,7 +219,7 @@ pprint(response)
 
 #params["object"] = product_patch
 
-# product = ProductPatch()
+# product = ProductUpdate()
 
 # product.price = 99.90
 

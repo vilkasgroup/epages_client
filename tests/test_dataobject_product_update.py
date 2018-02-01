@@ -7,7 +7,7 @@ import unittest
 # import the package
 import epages_client
 
-from epages_client.dataobjects.product_patch import ProductPatch
+from epages_client.dataobjects.product_update import ProductUpdate
 from epages_client.dataobjects.remove_value import RemoveValue
 
 # import base class for unit testing
@@ -19,7 +19,7 @@ class TestStringMethods(BaseUnitTest):
         pass
 
     def test_1001_correct_inputs(self):
-        product = ProductPatch()
+        product = ProductUpdate()
 
         product.productNumber = "prod_1"
         self.assertEqual(product.productNumber, "prod_1")
@@ -119,7 +119,7 @@ class TestStringMethods(BaseUnitTest):
         self.assert_count_items_equal(product.get_patch(), patch_values)
 
     def test_1201_correct_removes(self):
-        product = ProductPatch()
+        product = ProductUpdate()
         product.name = RemoveValue()
 
         # test str
@@ -140,7 +140,7 @@ class TestStringMethods(BaseUnitTest):
         self.assert_count_items_equal(product.get_patch(), patch_value)
 
     def test_2000_invalid_inputs(self):
-        product = ProductPatch()
+        product = ProductUpdate()
 
         with self.assertRaises(TypeError) as e:
             product.price = "12.21 €"
