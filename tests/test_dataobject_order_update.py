@@ -5,7 +5,7 @@ from pprint import pprint
 # import the package
 import epages_client
 
-from epages_client.dataobjects.order_patch import OrderUpdate
+from epages_client.dataobjects.order_update import OrderUpdate
 from epages_client.dataobjects.remove_value import RemoveValue
 
 # import base class for unit testing

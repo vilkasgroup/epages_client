@@ -21,7 +21,7 @@ from epages_client.dataobjects.cart_create import CartCreate
 from epages_client.dataobjects.product_line_item_create import ProductLineItemCreate
 from epages_client.dataobjects.product_line_item_update import ProductLineItemUpdate
 from epages_client.dataobjects.address import Address
-from epages_client.dataobjects.order_patch import OrderUpdate
+from epages_client.dataobjects.order_update import OrderUpdate
 
 
 class TestCartsOrdersAndOrdersMethods(BaseUnitTest):

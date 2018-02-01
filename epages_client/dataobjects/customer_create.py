@@ -4,7 +4,7 @@ from .data_object import DataObject
 from .address import Address
 
 
-class CustomerUpdate(DataObject):
+class CustomerCreate(DataObject):
     ''''Data object for creating a new customer to ePages webshop'''
 
     def __init__(self):

@@ -7,7 +7,7 @@ import unittest
 # import the package
 import epages_client
 
-from epages_client.dataobjects.product_patch import ProductUpdate
+from epages_client.dataobjects.product_update import ProductUpdate
 from epages_client.dataobjects.remove_value import RemoveValue
 
 # import base class for unit testing

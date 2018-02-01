@@ -1,6 +1,6 @@
 from epages_client.client import RestClient
 from epages_client.dataobjects.product_create import ProductCreate
-from epages_client.dataobjects.product_patch import ProductUpdate
+from epages_client.dataobjects.product_update import ProductUpdate
 from epages_client.dataobjects.category_create import CategoryCreate
 from epages_client.dataobjects.category_update import CategoryUpdate
 from epages_client.dataobjects.category_sequence_update import CategorySequenceUpdate

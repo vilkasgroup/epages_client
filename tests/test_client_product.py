@@ -28,7 +28,7 @@ from epages_client.dataobjects.category_sequence_update import CategorySequenceU
 from epages_client.dataobjects.product_create import ProductCreate
 
 # import the Product patch class from dataobjects
-from epages_client.dataobjects.product_patch import ProductUpdate
+from epages_client.dataobjects.product_update import ProductUpdate
 
 # import the Product image sequence update class from dataobjects
 from epages_client.dataobjects.product_slideshow_sequence_update import ProductSlideshowSequenceUpdate

@@ -11,7 +11,7 @@ from epages_client.client import RestClient
 from epages_client.dataobjects.customer_create import CustomerCreate
 
 # Import the customer patch class
-from epages_client.dataobjects.customer_patch import CustomerUpdate
+from epages_client.dataobjects.customer_update import CustomerUpdate
 
 # import base class for unit testing
 from .base_unit_test import BaseUnitTest
