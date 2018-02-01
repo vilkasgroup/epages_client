@@ -155,7 +155,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         self.save_resource(
             self.coupon_line_file, response['lineItemContainer']['couponLineItem']['couponLineItemId'].strip())
 
-    def test_0005_delete_coupon_from_cart(self):
+    def test_0006_delete_coupon_from_cart(self):
         # Deletes a coupon from a cart
 
         # set credential of cart
@@ -167,7 +167,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         response = self.client.delete_coupon(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
-    def test_0006_delete_product_line(self):
+    def test_0007_delete_product_line(self):
         # Removes a product line item from a cart.
 
         # set credentials of the cart
@@ -177,7 +177,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         response = self.client.delete_cart_line_item(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
-    def test_0007_add_billing_address(self):
+    def test_0008_add_billing_address(self):
         # Modifies the billing address for a cart.
 
         billing_address = Address()
@@ -196,14 +196,14 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         response = self.client.update_billing_address(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
-    def test_0008_delete_billing_address(self):
+    def test_0009_delete_billing_address(self):
         # set credentials of the cart
         self.params = self.add_cart_credential(self.params)
 
         response = self.client.delete_billing_address(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
-    def test_0009_add_shipping_address(self):
+    def test_0010_add_shipping_address(self):
         # Modifies the shipping address for a cart.
 
         shipping_address = Address()
@@ -224,7 +224,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         response = self.client.update_shipping_address(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
-    def test_0010_shipping_shipping_address(self):
+    def test_0011_shipping_shipping_address(self):
         # set credentials of the cart
         self.params = self.add_cart_credential(self.params)
 
@@ -302,7 +302,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         response = self.client.get_order(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
-    def test_1003_update_order(self):
+    def test_1004_update_order(self):
         # update the order created before
 
         order = OrderPatch()
@@ -318,7 +318,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         response = self.client.update_order(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
-    def test_1004_get_order_documents(self):
+    def test_1005_get_order_documents(self):
         # Returns finalized invoice and credit note order documents by orderId.
 
         # Get order id
