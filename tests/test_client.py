@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 import os
+import time
 
 # import the RestClient class
 from epages_client.client import RestClient
@@ -71,3 +72,5 @@ class TestClient(BaseUnitTest):
 
         # Rename the method mapping file to its original name
         os.rename(incorrect_mapping, correct_mapping)
+
+        time.sleep(1)
