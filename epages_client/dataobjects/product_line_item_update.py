@@ -19,4 +19,4 @@ class ProductLineItemUpdate(DataObject):
             value, "Quantity has to be numeric")
 
     def is_valid(self):
-        return True
+        return self._quantity != None
