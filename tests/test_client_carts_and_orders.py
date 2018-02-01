@@ -43,7 +43,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
     coupun_code = 'TEST-CODE-ABC123'
 
     def add_cart_credential(self, params):
-        '''This function adds cart token and cart id to params from csv file.'''
+        '''This function adds cart token and cart id to given params from csv file.'''
 
         content = self.get_resource(self.cart_file)
 
@@ -326,3 +326,83 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
 
         response = self.client.get_order_documents(self.params)
         self.assertEqual(isinstance(response, dict), True)
+
+    def test_2001_try_create_order_without_billing_address(self):
+        # User forget update billing address
+
+        # create a cart
+        response = self.client.add_cart(self.params)
+        self.save_cart_credential(response)
+
+        basic_params = self.add_cart_credential({})
+
+        # Billing address is missing!
+        with self.assertRaises(RuntimeError) as e:
+            response = self.client.create_order(basic_params)
+
+    def test_2002_try_add_billing_address_without_params_object(self):
+        # User forget add object to params
+
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
+
+        billing_address = Address()
+        billing_address.firstName = "Test"
+        billing_address.lastName = "Männen"
+        billing_address.email = "test@mannen.com"
+        billing_address.country = "FI"
+
+        # billingAddress is missing!
+        with self.assertRaises(RuntimeError) as e:
+            response = self.client.update_shipping_address(self.params)
+
+    def test_2003_try_add_billing_address_without_country(self):
+        # Try add a billing address without country
+
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
+
+        billing_address = Address()
+        billing_address.firstName = "Test"
+        billing_address.lastName = "Männen"
+        billing_address.email = "test@mannen.com"
+
+        self.params['object'] = billing_address
+
+        # Country not Valid (missing)
+        with self.assertRaises(RuntimeError) as e:
+            response = self.client.update_shipping_address(self.params)
+
+    def test_2004_try_add_billing_address_without_email(self):
+        # Try add a billing address without email
+
+        # set credential of cart
+        self.params = self.add_cart_credential(self.params)
+
+        billing_address = Address()
+        billing_address.firstName = "Test"
+        billing_address.lastName = "Männen"
+        billing_address.country = "GB"
+
+        self.params['object'] = billing_address
+
+        # Country not Valid (missing)
+        with self.assertRaises(RuntimeError) as e:
+            response = self.client.update_billing_address(self.params)
+
+    def test_2005_create_order_twise(self):
+        # try two times create order from a cart
+
+        # Add correct billing address
+        basic_params = self.add_cart_credential(self.params)
+        billing_address = Address()
+        billing_address.country = "FI"
+        billing_address.emailAddress = "test@mannen.com"
+        basic_params["object"] = billing_address
+
+        response = self.client.update_billing_address(basic_params)
+
+        response = self.client.create_order(basic_params)
+        # Reason: Not Found
+        with self.assertRaises(RuntimeError) as e:
+            response = self.client.create_order(basic_params)
