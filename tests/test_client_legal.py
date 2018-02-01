@@ -82,14 +82,14 @@ class TestLegalMethods(BaseUnitTest):
 
     def test_008_update_contact_information_unsupported_locale(self):
 
-        self.params["query"]["locale"] = "de_DE"
+        self.client.locale = "de_DE"
 
         with self.assertRaises(RuntimeError) as e:
             response = self.client.update_contact_information(self.params)
 
     def test_009_update_contact_information_invalid_object(self):
 
-        self.params["query"]["locale"] = "fi_FI"
+        self.client.locale = "fi_FI"
         self.params["object"] = None
 
         with self.assertRaises(TypeError) as e:
@@ -97,7 +97,7 @@ class TestLegalMethods(BaseUnitTest):
 
     def test_010_update_contact_information(self):
 
-        self.params["query"]["locale"] = "en_GB"
+        self.client.locale = "en_GB"
 
         contact_info = ContactInfo()
 
@@ -119,7 +119,7 @@ class TestLegalMethods(BaseUnitTest):
 
     def test_012_update_privacy_policy(self):
 
-        self.params["query"]["locale"] = "en_GB"
+        self.client.locale = "en_GB"
 
         privacy_policy = self.client.get_privacy_policy(self.params)
 
@@ -143,7 +143,7 @@ class TestLegalMethods(BaseUnitTest):
 
     def test_014_update_terms_and_conditions(self):
 
-        self.params["query"]["locale"] = "en_GB"
+        self.client.locale = "en_GB"
 
         terms_and_conditions = self.client.get_terms_and_conditions(
             self.params)
@@ -169,7 +169,7 @@ class TestLegalMethods(BaseUnitTest):
     @skip_test
     def test_016_update_rights_of_withdrawal(self):
 
-        self.params["query"]["locale"] = "en_GB"
+        self.client.locale = "en_GB"
 
         content_page = ContentPage()
 
@@ -191,7 +191,7 @@ class TestLegalMethods(BaseUnitTest):
 
     def test_018_update_shipping_information(self):
 
-        self.params["query"]["locale"] = "en_GB"
+        self.client.locale = "en_GB"
 
         content_page = ContentPage()
 
