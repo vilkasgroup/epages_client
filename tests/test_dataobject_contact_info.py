@@ -52,7 +52,7 @@ class TestStringMethods(BaseUnitTest):
             'contactPersonJobTitle': 'Director',
             'address': 'Street',
             'phone': '020 7431912',
-            'email' : 'email@address.invalid'
+            'email': 'email@address.invalid'
         }
 
         self.assertEqual(c_info.get_dict(), right_answer)
