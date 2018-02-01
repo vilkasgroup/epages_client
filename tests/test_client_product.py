@@ -28,7 +28,7 @@ from epages_client.dataobjects.category_sequence_update import CategorySequenceU
 from epages_client.dataobjects.product_create import ProductCreate
 
 # import the Product patch class from dataobjects
-from epages_client.dataobjects.product_patch import ProductPatch
+from epages_client.dataobjects.product_patch import ProductUpdate
 
 # import the Product image sequence update class from dataobjects
 from epages_client.dataobjects.product_slideshow_sequence_update import ProductSlideshowSequenceUpdate
@@ -792,7 +792,7 @@ class TestProductMethods(BaseUnitTest):
         product_id = self.get_product_id()
         self.params["param1"] = product_id
 
-        product = ProductPatch()
+        product = ProductUpdate()
         product.price = 29.90
         product.stocklevel = 5
 

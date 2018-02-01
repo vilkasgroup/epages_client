@@ -7,7 +7,7 @@ from .list_of_objects import ListOfObjects
 from .remove_value import RemoveValue
 
 
-class ProductPatch(DataObject):
+class ProductUpdate(DataObject):
     """Data object for updating a product"""
 
     def __init__(self):
