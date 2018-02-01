@@ -1,8 +1,16 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-import requests
+import os
 import logging
+import requests
+
+# Check if logging level is set in environment variables
+if "EPAGES_LOGGING_LEVEL" in os.environ:
+
+    # Set logging level
+    LOGGING_LEVEL = logging.getLevelName(os.getenv("EPAGES_LOGGING_LEVEL"))
+    logging.basicConfig(level=LOGGING_LEVEL)
 
 
 class HttpHandler(object):
@@ -106,19 +114,19 @@ class HttpHandler(object):
         '''
         if 'path' in dict_data:
             path = dict_data['path']
-            logging.debug('path: ' + str(path))
+            logging.debug('path: %s', str(path))
         else:
             raise ValueError("Path was not set in the request dictionary")
 
         if 'query' in dict_data:
             query = dict_data['query']
-            logging.debug('query: ' + str(path))
+            logging.debug('query: %s', str(query))
         else:
             raise ValueError("Query was not set in the request dictionary")
 
         if 'data' in dict_data:
             data = dict_data['data']
-            logging.debug('data: ' + str(data))
+            logging.debug('data: %s', str(data))
         else:
             raise ValueError("Data was not set in the request dictionary")
 
@@ -136,7 +144,7 @@ class HttpHandler(object):
         path, query, data = self._check_input_dictionary(dict_data)
         headers = self._default_headers
         request_url = self.api_url + path
-        logging.debug('HttpHandler request_url: ' + request_url)
+        logging.debug('HttpHandler request_url: %s', request_url)
 
         # If use_data is specified for this particular request, the data must
         # be sent using the data argument.
@@ -155,23 +163,24 @@ class HttpHandler(object):
             response = http_method_func(
                 request_url, params=query, json=data, headers=headers)
 
-        # Accepted when status in 2xx
-        if str(response.status_code)[0] == '2':
-            # If status code is 204 ("No content"), don't try to convert it to json,
-            # because there isn't anything to convert.
-            if str(response.status_code)[:3] == "204":
-                response_dictionary = {
-                    "Message": "Operation completed succesfully."}
-            else:
-                response_dictionary = response.json()
-                # Some special cases will be added to the responce dictionary from response header
-                if 'X-ePages-Cart-Token' in response.headers.keys():
-                    response_dictionary['X-ePages-Cart-Token'] = response.headers['X-ePages-Cart-Token']
+        # If status code is 204 ("No content"), don't try to convert it to json,
+        # because there isn't anything to convert.
+        if str(response.status_code)[:3] == "204":
+            response_dictionary = {
+                "Message": "Operation completed succesfully."}
+        # If status starts with 2, it is accepted
+        elif str(response.status_code)[0] == '2':
+            response_dictionary = response.json()
+
+            # Some special cases will be added to the responce dictionary from response header
+            if 'X-ePages-Cart-Token' in response.headers.keys():
+                response_dictionary['X-ePages-Cart-Token'] = response.headers['X-ePages-Cart-Token']
         else:
-            logging.debug("HttpHandler error: " + response.text)
-            error_message = "HTTP-request failed. Response status was " + \
-                str(response.status_code)
-            logging.error(error_message)
+            logging.debug("HttpHandler error: %s", response.text)
+
+            error_message = "HTTP request failed. Response status was " + \
+                str(response.status_code) + ". Reason: " + str(response.reason)
+
             raise RuntimeError(error_message)
 
         return response_dictionary
