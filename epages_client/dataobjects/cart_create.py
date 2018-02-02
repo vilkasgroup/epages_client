@@ -47,4 +47,4 @@ class CartCreate(DataObject):
         self._locale = self._check_str(value)
 
     def is_valid(self):
-        return True
+        return self.lineItems.is_valid()
