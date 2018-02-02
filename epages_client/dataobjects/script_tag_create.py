@@ -18,3 +18,11 @@ class ScriptTagCreate(DataObject):
     @scriptUrl.setter
     def scriptUrl(self, value):
         self._scriptUrl = self._check_url(value)
+
+    def is_valid(self):
+
+        # Script url must be set always
+        if not self._scriptUrl:
+            return False
+        else:
+            return True

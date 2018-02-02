@@ -7,7 +7,7 @@ from .list_of_objects import ListOfObjects
 from .remove_value import RemoveValue
 
 
-class ProductPatch(DataObject):
+class ProductUpdate(DataObject):
     """Data object for updating a product"""
 
     def __init__(self):
@@ -269,4 +269,4 @@ class ProductPatch(DataObject):
         return self.get_list_of_json_patches(self.legals)
 
     def is_valid(self):
-        return True
+        return self.searchKeywords.is_valid()

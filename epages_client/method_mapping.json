@@ -96,7 +96,7 @@
             "path": "/legal/shipping-information"
         }
     },
-    "get_newsletter-campaigns": {
+    "get_newsletter_campaigns": {
         "method": "get",
         "api_dict": {
             "path": "/newsletter-campaigns"
@@ -137,7 +137,70 @@
             "path": "/sales"
         }
     },
-    "add_order": {
+    "get_cart": {
+        "method": "get",
+        "require": ["param1"],
+        "api_dict": {
+            "path": "/carts"
+        }
+    },
+    "add_cart": {
+        "method": "post",
+        "api_dict": {
+            "path": "/carts"
+        }
+    },
+    "add_coupon": {
+        "method": "post",
+        "api_dict": {
+            "headers": {
+                "Accept": "*/*",
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            "use_data": 1,
+            "path": "/carts"
+        },
+        "require": ["param1"],
+        "path2": "/coupon"
+    },
+    "delete_coupon": {
+        "method": "delete",
+        "api_dict": {
+            "headers": {
+                "Accept": "*/*",
+                "Content-Type": "application/x-www-form-urlencoded"
+            },
+            "use_data": 1,
+            "path": "/carts"
+        },
+        "require": ["param1", "param2"],
+        "path2": "/coupon"
+    },
+    "add_cart_line_item": {
+        "method": "post",
+        "api_dict": {
+            "path": "/carts"
+        },
+        "require": ["param1"],
+        "path2": "/line-items"
+    },
+    "update_cart_line_item": {
+        "method": "put",
+        "require": ["param1", "param2"],
+        "path2": "/line-items",
+        "api_dict" : {
+            "path": "/carts"
+        }
+    },
+    "delete_cart_line_item": {
+        "method": "delete",
+        "api_dict": {
+            "path": "/carts"
+        },
+        "require": ["param1", "param2"],
+        "path2": "/line-items"
+    },
+    "create_order": {
         "method": "post",
         "require": ["param1"],
         "api_dict": {
@@ -151,6 +214,38 @@
         "api_dict": {
             "path": "/orders"
         }
+    },
+    "update_billing_address": {
+        "method": "put",
+        "require": ["param1"],
+        "path2": "/billing-address",
+        "api_dict": {
+            "path": "/carts"
+        }
+    },
+    "delete_billing_address": {
+        "method": "delete",
+        "api_dict": {
+            "path": "/carts"
+        },
+        "require": ["param1"],
+        "path2": "/billing-address"
+    },
+    "update_shipping_address": {
+        "method": "put",
+        "require": ["param1"],
+        "path2": "/shipping-address",
+        "api_dict": {
+            "path": "/carts"
+        }
+    },
+    "delete_shipping_address": {
+        "method": "delete",
+        "api_dict": {
+            "path": "/carts"
+        },
+        "require": ["param1"],
+        "path2": "/shipping-address"
     },
     "get_shop_info": {
         "method": "get",

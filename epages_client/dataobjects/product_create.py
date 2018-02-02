@@ -169,4 +169,4 @@ class ProductCreate(DataObject):
     def is_valid(self):
         ''' Have all mandatory values set?
         '''
-        return self._productNumber != None
+        return self._productNumber != None and self.searchKeywords.is_valid()

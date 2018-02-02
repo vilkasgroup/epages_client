@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 # import the Httphandler Class
-from .httphandler import HttpHandler
+from .http_handler import HttpHandler
 
 # import the Product class from dataobjects
 from .dataobjects.data_object import DataObject
@@ -40,7 +40,7 @@ class RestClient(object):
 
             # Close the file handler
             methods.close()
-        except FileNotFoundError:
+        except IOError:
             print("Error: method mapping file not found.")
             self.mapping = {}
 
@@ -63,7 +63,7 @@ class RestClient(object):
                 # Check the sent parameters
                 method = self.check_params(method, params)
 
-                # Get the needed method function from httphandler
+                # Get the needed method function from HttpHandler
                 method_func = getattr(self.http, method["method"])
 
                 # Perform the API call
@@ -73,7 +73,7 @@ class RestClient(object):
 
             return build_request
         else:
-            print("NotDefined")
+            print("Error: command '%s' not found." % (attr,))
 
     def check_params(self, method=None, params=None):
         '''
@@ -89,6 +89,15 @@ class RestClient(object):
 
             if "query" not in params:
                 params["query"] = {}
+
+            # If user has set headers
+            if "headers" in params and params["headers"]:
+
+                # If headers are found in api_dict, merge headers in params with them
+                if "headers" in method["api_dict"] and method["api_dict"]["headers"]:
+                    method["api_dict"]["headers"].update(params["headers"])
+                else:
+                    method["api_dict"]["headers"] = params["headers"]
 
             # If parameters has a data object
             if "object" in params:
@@ -110,11 +119,11 @@ class RestClient(object):
                     params["data"] = obj.get_dict()
 
             # If query has not currency or locale, use setted ones
-            if "currency" not in params["query"] and self._currency != "":
-                params["query"]["currency"] = self._currency
+            if "currency" not in params["query"] and self.currency != "":
+                params["query"]["currency"] = self.currency
 
-            if "locale" not in params["query"] and self._locale != "":
-                params["query"]["locale"] = self._locale
+            if "locale" not in params["query"] and self.locale != "":
+                params["query"]["locale"] = self.locale
 
             # Check if there's variable requirements and loop them
             if "require" in method:
@@ -152,15 +161,6 @@ class RestClient(object):
             method["api_dict"]["query"] = params["query"]
 
             return method
-
-    def commands(self):
-        '''Print available commands for user'''
-
-        print("Available commands are\n")
-
-        # Loop keys in self.mapping, sorted alphabetically
-        for key in sorted(self.mapping):
-            print(key)
 
     @property
     def currency(self):
