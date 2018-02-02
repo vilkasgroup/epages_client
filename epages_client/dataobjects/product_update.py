@@ -269,4 +269,4 @@ class ProductUpdate(DataObject):
         return self.get_list_of_json_patches(self.legals)
 
     def is_valid(self):
-        return True
+        return self.searchKeywords.is_valid()
