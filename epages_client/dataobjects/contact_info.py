@@ -12,7 +12,7 @@ class ContactInfo(DataObject):
         self._name = None
         # string The name of the contact information page, that appears on the browser tab.
         self._title = None
-        # string 	The name of the contact information page that appears in the navigation bar.
+        # string The name of the contact information page that appears in the navigation bar.
         self._navigationCaption = None
         # string Additional short information that can be given to e.g. better explain what’s on the contact information page.
         self._shortDescription = None
@@ -117,7 +117,7 @@ class ContactInfo(DataObject):
 
     @email.setter
     def email(self, value):
-        self._emailAddress = self._check_email(value)
+        self._email = self._check_email(value)
 
     def is_valid(self):
         return True
