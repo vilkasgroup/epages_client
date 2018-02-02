@@ -13,6 +13,7 @@ pylint = "*"
 validators = "*"
 sphinx = "*"
 coverage = "*"
+bumpversion = "*"
 
 
 [requires]
