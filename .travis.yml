@@ -12,18 +12,28 @@ install: pip install -U tox-travis python-coveralls
 # command to run tests, e.g. python setup.py test
 script: tox
 
-# After you create the Github repo and add it to Travis, run the
-# travis_pypi_setup.py script to finish PyPI deployment setup
-#deploy:
-#  provider: pypi
-#  distributions: sdist bdist_wheel
-#  user: spexi
-#  password:
-#    secure: PLEASE_REPLACE_ME
-#  on:
-#    tags: true
-#    repo: spexii/epages_client
-#    python: 2.7
+deploy:
+  provider: pypi
+  distributions: sdist bdist_wheel
+  user: vilkas
+  password:
+    secure: !!binary |
+      T2c4UEsveHltMUhab00vemxwUXBlRXVGamtWa2lJeUhpYllnR3ZjMEhBWXJLRldwb0V4NGVUWEZT
+      TlM2VmltQnYyRGU3alpCRFNYWWQ0TkU4eDVUM0c3NHZPWGNqMVF0VXFBM2NFL0ZGai9VYUUza092
+      WE5jZzFrNTZFUytIQzlHc3p2ZnBhTU40dEU2QjRKQlVWcHorNithNG9UYmd1YVIzRVA5ek53aC9Q
+      NWxUTENkblhldTN0Z3daVU5lNmhNV0tZM2YyaTVNWnV2R2RIRDJURjNBZzJqZDluV3MyZGtmY2Jw
+      YmE1L3VWcHdMQWFhRElmT1NjOFB6bE5FcjU1Mm90L0lQbDBLdXAwazc0T3Jnd1JrSlBuTEphMUxa
+      cVp0a0xVUE8rT000V2QzTXhhVjRiRUQzcit2VXUrVzNGcTlQYk5RQUp5aHIyemZyOXFvZUNzVkl1
+      eHVPVE5nTnF1a1dkR2JkeXBack5TekRoQk5rZTNmclR4Zk42QmQrajZqUi9LcU5BejY0VlZrbkI2
+      cGdkdXpSZ2J6dU45K0N1WVpvb1JNYVRuL0RWU093NTdXeFR3bUhQWkx4eE8zdVdSRFJ5RkZKMEFJ
+      N1RDdDVNVkV0ZHhPcmc2S2dkTkh4VE45Uk5HVTkzdGZWeWdLRTAxL3pUYWgzWklmQ04yTVNUSFdK
+      MHJoRE1IU0FmTFYxaFljTjEzRlZJYms2cXRiOUZIWmx2TVlRaUNUYVBhWWRQQzVMeHBQYUNOUVBz
+      bGJVK3dmbFJ2Q2dVWitGMVNOZzBldFU0OW5qNVcyQkhNQUNxd3A2eTltTlE4b280UTlQaHVnakJZ
+      OGdROFpKTWFJTmY2R3cvWW15TWVBU3IzRG9Rc1JJSGlRbXJsRFd1cHZoUFpITVRNSWtBMklVVEE9
+  true:
+    python: 2.7
+    repo: vilkasgroup/epages_client
+    tags: true
 
 after_success:
   - coverage run --source epages_client setup.py test
