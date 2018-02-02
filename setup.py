@@ -34,7 +34,7 @@ setup(
     author="Pekka Piispanen",
     author_email='pekka@vilkas.fi',
     url='https://github.com/vilkasgroup/epages_client',
-    packages=find_packages(include=['epages_client']),
+    packages=find_packages(),
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",
