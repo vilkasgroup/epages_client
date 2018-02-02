@@ -57,8 +57,8 @@ class TestStringMethods(BaseUnitTest):
         product.deliveryPeriod = "5 days"
         self.assertEqual(product.deliveryPeriod, "5 days")
 
-        product.minStockLevel = 6
-        self.assertEqual(product.minStockLevel, 6)
+        product.minStocklevel = 6
+        self.assertEqual(product.minStocklevel, 6)
 
         product.manufacturerProductNumber = "00000001ZDEDDY"
         self.assertEqual(product.manufacturerProductNumber, "00000001ZDEDDY")
@@ -113,7 +113,8 @@ class TestStringMethods(BaseUnitTest):
             {'op': 'add', 'path': '/ean', 'value': '0012345678905'},
             {'op': 'add', 'path': '/priceInfo/depositPrice/amount', 'value': 0.0},
             {'op': 'add', 'path': '/stocklevel', 'value': 5},
-            {'op': 'add', 'path': '/productHeight', 'value': 457}
+            {'op': 'add', 'path': '/productHeight', 'value': 457},
+            {'op': 'add', 'path': '/minStocklevel', 'value': 6}
         ]
 
         self.assert_count_items_equal(product.get_patch(), patch_values)
