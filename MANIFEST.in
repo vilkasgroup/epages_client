@@ -3,6 +3,7 @@ include CONTRIBUTING.rst
 include HISTORY.rst
 include LICENSE
 include README.rst
+include epages_client/method_mapping.json
 
 recursive-include tests *
 recursive-exclude * __pycache__
