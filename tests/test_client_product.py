@@ -309,6 +309,9 @@ class TestProductMethods(BaseUnitTest):
 
     def test_017_get_products(self):
 
+        # Set currency just to test currency setter
+        self.client.currency = "GBP"
+        
         products = self.client.get_products(self.params)
 
         self.assertEqual(isinstance(products, dict), True)

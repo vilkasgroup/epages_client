@@ -40,7 +40,7 @@ class RestClient(object):
 
             # Close the file handler
             methods.close()
-        except FileNotFoundError:
+        except IOError:
             print("Error: method mapping file not found.")
             self.mapping = {}
 
