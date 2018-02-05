@@ -38,7 +38,7 @@ Each method accepts a single dictionary parameter called params.
     }
 
 * data
-    * The content here is most of the times a dictionary, but can have a binary file, too.
+    * The content here is usually a dictionary, but can have a binary file, too.
 
 * param1
     * The first parameter to add to the api url
