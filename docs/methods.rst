@@ -3,6 +3,8 @@ Methods
 =======
 
 Here's a list of available methods to use with ePages Client.
+Each method accepts a single dict parameter called params. The
+more detailed description of the param is found in the usage document.
 
 Customers
 ---------
