@@ -6,6 +6,7 @@ Development Lead
 ----------------
 
 * Pekka Piispanen <pekka@vilkas.fi>
+* Tero Kotti <tero@vilkas.fi>
 
 Contributors
 ------------

@@ -56,7 +56,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'ePages Client'
-copyright = u"2018, Pekka Piispanen"
+copyright = u"2018, Pekka Piispanen, Tero Kotti"
 
 # The version info for the project you're documenting, acts as replacement
 # for |version| and |release|, also used in various other places throughout
@@ -210,7 +210,7 @@ latex_elements = {
 latex_documents = [
     ('index', 'epages_client.tex',
      u'ePages Client Documentation',
-     u'Pekka Piispanen', 'manual'),
+     u'Pekka Piispanen, Tero Kotti', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at
@@ -241,7 +241,7 @@ latex_documents = [
 man_pages = [
     ('index', 'epages_client',
      u'ePages Client Documentation',
-     [u'Pekka Piispanen'], 1)
+     [u'Pekka Piispanen, Tero Kotti'], 1)
 ]
 
 # If true, show URL addresses after external links.
@@ -256,7 +256,7 @@ man_pages = [
 texinfo_documents = [
     ('index', 'epages_client',
      u'ePages Client Documentation',
-     u'Pekka Piispanen',
+     u'Pekka Piispanen, Tero Kotti',
      'epages_client',
      'One line description of project.',
      'Miscellaneous'),
