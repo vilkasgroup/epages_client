@@ -28,13 +28,13 @@ test_requirements = [
 
 setup(
     name='epages_client',
-    version='0.1.0',
+    version='0.1.5',
     description="Python client for ePages REST API.",
     long_description=readme + '\n\n' + history,
     author="Pekka Piispanen",
     author_email='pekka@vilkas.fi',
     url='https://github.com/vilkasgroup/epages_client',
-    packages=find_packages(include=['epages_client']),
+    packages=find_packages(),
     include_package_data=True,
     install_requires=requirements,
     license="MIT license",
