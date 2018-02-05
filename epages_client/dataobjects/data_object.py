@@ -67,43 +67,43 @@ class DataObject(object):
         return list_of_json_patches
 
     def _check_email(self, value, error_msg=None, allow_remove_value=False):
-        '''Return a given value as str (email) if the value is a valid e-mail address. Otherwise throws ValueError.'''
+        '''Return the given value as a str if the value is a valid e-mail address. Otherwise throws ValueError.'''
 
         if validators.email(value) or (allow_remove_value and isinstance(value, RemoveValue)):
             return value
         else:
-            error_msg = error_msg or "A given value is not a valid email address"
+            error_msg = error_msg or "The given value is not a valid email address."
             raise ValueError(error_msg)
 
     def _check_url(self, value, error_msg=None, allow_remove_value=False):
-        '''Return a given value as str (URL) if a value is valid url. Otherwise throws ValueError.'''
+        '''Return the given value as a str if a value is a valid url. Otherwise throws ValueError.'''
 
         if validators.url(value):
             return value
         else:
-            error_msg = error_msg or "A given value is not a valid url."
+            error_msg = error_msg or "The given value is not a valid url."
             raise ValueError(error_msg)
 
     def _check_str(self, value, error_msg=None, allow_remove_value=False):
-        '''Return a given value if the value is type of str. Otherwise throws TypeError.'''
-        error_msg = error_msg or 'A given value is not str'  # TODO: str(value)
+        '''Return the given value if the value is a str. Otherwise throws TypeError.'''
+        error_msg = error_msg or 'The given value is not a str.'
         allow_types = string_types
         return self._check_type(value, error_msg, allow_types, allow_remove_value)
 
     def _check_bool(self, value, error_msg=None, allow_remove_value=False):
-        '''Return a given value if the value is type of bool. Otherwise throws TypeError.'''
-        error_msg = error_msg or 'A given value is not bool.'  # TODO: str(value)
+        '''Return a given value if the value is a bool. Otherwise throws TypeError.'''
+        error_msg = error_msg or 'The given value is not a bool.'
         allow_types = (bool,)
         return self._check_type(value, error_msg, allow_types, allow_remove_value)
 
     def _check_numeric(self, value, error_msg=None, allow_remove_value=False):
-        '''Return a given value if the value is type of int or float. Otherwise throws TypeError.'''
-        error_msg = error_msg or 'A given value is not numeric'  # TODO: str(value)
+        '''Return the given value if the value is an int or float. Otherwise throws TypeError.'''
+        error_msg = error_msg or 'The given value is not a numeric type.'
         allow_types = (int, float)
         return self._check_type(value, error_msg, allow_types, allow_remove_value)
 
     def _check_type(self, value, error_msg, allowed_types, allow_remove_value):
-        '''Return a given value if the value is type of allowed types or allow_remove_value is true and the value is instance of RemoveValue. Otherwise throws TypeError.'''
+        '''Return the given value if the value is one of allowed types or allow_remove_value is true and the value is an instance of RemoveValue. Otherwise throws TypeError.'''
         if isinstance(value, allowed_types) or (allow_remove_value and isinstance(value, RemoveValue)):
             return value
         else:
