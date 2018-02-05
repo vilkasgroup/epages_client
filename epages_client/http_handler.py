@@ -7,7 +7,6 @@ import requests
 
 # Check if logging level is set in environment variables
 if "EPAGES_LOGGING_LEVEL" in os.environ:
-
     # Set logging level
     LOGGING_LEVEL = logging.getLevelName(os.getenv("EPAGES_LOGGING_LEVEL"))
     logging.basicConfig(level=LOGGING_LEVEL)
@@ -18,6 +17,18 @@ class HttpHandler(object):
     _URI_separator = '/'
 
     def __init__(self, api_url, token, verify, client_id, client_secret, beyond):
+        '''
+        Constructor for HttpHandler class.
+
+        :param str api_url: Web Shop API end point address
+        :param str token: Access Token to access the ePages API
+        :param bool verify: Not in use (beyond)
+        :param str client_id: Not in use (beyond)
+        :param str client_secret: Not in use (beyond)
+        :param bool beyond: Is beyond version in use?
+        :rtype: None
+        '''
+
         self.api_url = api_url
         self.token = token
         self.verify = verify
@@ -26,59 +37,83 @@ class HttpHandler(object):
         self.beyond = beyond
 
         self._default_headers = {}
-        self.api_url = api_url
-        self.token = token
-        self.verify = verify
-        self.client_id = client_id
-        self.client_secret = client_secret
-        self.beyond = beyond
 
         # Remove trailing / from api_url
         if self.api_url.endswith(HttpHandler._URI_separator):
             self.api_url = self.api_url[:-1]
 
     def get(self, dict_data):
+        '''
+        Do the GET request. 
 
-        # Set headers
+        :param: dict dict_data: request dictionary
+        :return: Response from the web shop server
+        :rtype dict
+        '''
+
         self._set_headers(dict_data, "get")
 
-        # Do the GET request
         return self._request(requests.get, dict_data)
 
     def post(self, dict_data):
+        '''
+        Do the POST request. 
 
-        # Set headers
+        :param: dict dict_data: request dictionary
+        :return: Response from the web shop server
+        :rtype dict
+        '''
+
         self._set_headers(dict_data, "post")
 
-        # Do the POST request
         return self._request(requests.post, dict_data)
 
     def put(self, dict_data):
+        '''
+        Do the PUT request. 
 
-        # Set headers
+        :param: dict dict_data: request dictionary
+        :return: Response from the web shop server
+        :rtype dict
+        '''
+
         self._set_headers(dict_data, "put")
 
-        # Do the PUT request
         return self._request(requests.put, dict_data)
 
     def delete(self, dict_data):
+        '''
+        Do delete HTTP-request. 
 
-        # Set headers
+        :param: dict dict_data: request dictionary
+        :return: Response from the web shop server
+        :rtype dict
+        '''
+
         self._set_headers(dict_data, "delete")
 
-        """Do delete HTTP-request"""
         return self._request(requests.delete, dict_data)
 
     def patch(self, dict_data):
+        '''
+        Do the patch HTTP-patch. 
 
-        # Set headers
+        :param: dict dict_data: request dictionary
+        :return: Response from the web shop server
+        :rtype dict
+        '''
+
         self._set_headers(dict_data, "patch")
 
-        # Do the patch HTTP-patch
         return self._request(requests.patch, dict_data)
 
     def _set_headers(self, dict_data, method):
-        """Sets headers"""
+        '''
+        Sets headers for HTTP request
+        :param: dict dict_data: request dictionary
+        :param: str method: HTTP request type
+        :rtype: None
+        '''
 
         if self.beyond:
             self._default_headers["Accept"] = "application/hal+json"
@@ -106,11 +141,13 @@ class HttpHandler(object):
             self._default_headers.update(dict_data["headers"])
 
     def _check_input_dictionary(self, dict_data):
-        '''Check that path, query and data are set in request dictionary and return values as list
-        Args:
-            dict_data request dictionary
-        Return:
-            a list of values
+        '''
+        Check that path, query and data are set in the request dictionary and return values as list
+
+        :param: dict dict_data: request dictionary
+        :return Tuple of path, query, and data
+        :rtype tuple(dict, dict, dict)
+        :raises ValueError: if path, query, or data is not set in the request dictionary
         '''
         if 'path' in dict_data:
             path = dict_data['path']
@@ -133,12 +170,14 @@ class HttpHandler(object):
         return (path, query, data)
 
     def _request(self, http_method_func, dict_data):
-        """Executes a HTTP request.
-        Args:
-            http_method_func (object): HTTP request method for requests.
-            dict_data (dict): Data to a server.
-        Return:
-            Dictionary
+        """
+        Executes a HTTP request.
+
+        :param: object http_method_func: HTTP request method for requests.
+        :param: dict dict_data: Data to a server.
+        :return: Response from the web shop server
+        :rtype: dict
+        :raises RuntimeError: If a request to the web shop server fail
         """
 
         path, query, data = self._check_input_dictionary(dict_data)
