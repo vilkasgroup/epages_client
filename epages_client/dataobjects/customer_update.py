@@ -21,7 +21,7 @@ class CustomerUpdate(CustomerCreate):
 
     @internalNote.setter
     def internalNote(self, value):
-        self._internalNote = self._check_str(value, allow_remove_value=True)
+        self._internalNote = self._check_str(value, "InternalNote has to be a str or RemoveValue.", True)
 
     def get_patch(self):
         return self.get_list_of_json_patches(self.legals)

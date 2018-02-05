@@ -24,7 +24,7 @@ class ContentPage(DataObject):
 
     @name.setter
     def name(self, value):
-        self._name = self._check_str(value)
+        self._name = self._check_str(value, "Name has to be a str.")
 
     @property
     def title(self):
@@ -32,7 +32,7 @@ class ContentPage(DataObject):
 
     @title.setter
     def title(self, value):
-        self._title = self._check_str(value)
+        self._title = self._check_str(value, "Title has to be a str.")
 
     @property
     def navigationCaption(self):
@@ -40,7 +40,8 @@ class ContentPage(DataObject):
 
     @navigationCaption.setter
     def navigationCaption(self, value):
-        self._navigationCaption = self._check_str(value)
+        self._navigationCaption = self._check_str(
+            value, "NavigationCaption has to be a str.")
 
     @property
     def shortDescription(self):
@@ -48,7 +49,8 @@ class ContentPage(DataObject):
 
     @shortDescription.setter
     def shortDescription(self, value):
-        self._shortDescription = self._check_str(value)
+        self._shortDescription = self._check_str(
+            value, "ShortDescription has to be a str.")
 
     @property
     def description(self):
@@ -56,7 +58,8 @@ class ContentPage(DataObject):
 
     @description.setter
     def description(self, value):
-        self._description = self._check_str(value)
+        self._description = self._check_str(
+            value,  "Description has to be a str.")
 
     def is_valid(self):
         return True

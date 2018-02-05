@@ -4,12 +4,13 @@ from .data_object import DataObject
 
 
 class ScriptTagCreate(DataObject):
-    ''''Data object for creating a new script tag to ePages webshop'''
+    '''Data object for creating a new script tag to ePages webshop'''
 
-    def __init__(self):
+    def __init__(self, scriptUrl=None):
 
         # string The URL of the script.
-        self._scriptUrl = None
+        self._scriptUrl = None if scriptUrl == None else self._check_url(
+            scriptUrl, "ScriptUrl has to be a str.")
 
     @property
     def scriptUrl(self):
@@ -17,7 +18,7 @@ class ScriptTagCreate(DataObject):
 
     @scriptUrl.setter
     def scriptUrl(self, value):
-        self._scriptUrl = self._check_url(value)
+        self._scriptUrl = self._check_url(value, "ScriptUrl has to be a str.")
 
     def is_valid(self):
 

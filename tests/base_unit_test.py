@@ -61,7 +61,7 @@ class BaseUnitTest(unittest.TestCase):
         file_path = os.path.join(self.get_resources_path(), filename)
 
         if os.path.isfile(file_path) == False:
-            raise RuntimeError("File %s didn't find" % (file_path,))
+            raise RuntimeError("File %s not found" % (file_path,))
 
         with open(file_path, 'r') as read_file:
             content = read_file.read()
