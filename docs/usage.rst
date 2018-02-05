@@ -95,7 +95,7 @@ Examples
     # Find products where name contains the word 'laptop'
     # Limit search results to have 50 items
     params["query"] = {
-        "query"]: "laptop",
+        "query": "laptop",
         "limit": 50
     }
 

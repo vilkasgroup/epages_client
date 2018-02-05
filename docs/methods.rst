@@ -12,6 +12,8 @@ Customers
 get_customers
 ~~~~~~~~~~~~~
 
+Link text <http://example.com/>
+
 This method fetches all customers from the shop.
 
 Required parameters: none
