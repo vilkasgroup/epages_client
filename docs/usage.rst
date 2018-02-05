@@ -51,7 +51,8 @@ This parameter is not mandatory for all methods.
     * A dictionary for query parameters, for example including hidden items in results.
 
 * object
-    * As the name implies, this gets an object as a value.
+    * As the name implies, this gets an object as a value. Objects are located in the
+    dataobjects directory.
 
 Examples
 ~~~~~~~~
