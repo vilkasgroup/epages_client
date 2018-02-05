@@ -154,6 +154,9 @@ This method updates the shipping information of a shop.
 
 Required parameters: locale must be set
 
+Newsletters
+-----------
+
 get_newsletter_campaigns
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -171,6 +174,9 @@ get_newsletter_campaign_subscribers
 This method gets the subscribers of a newsletter campaign from a shop.
 
 Required parameters: Newsletter campaign id in param1
+
+Orders and carts
+----------------
 
 get_orders
 ~~~~~~~~~~
@@ -325,6 +331,9 @@ delete_shipping_address
 This method deletes the shipping address from a cart.
 
 Required parameters: Cart id in param1
+
+Products
+--------
 
 get_shop_info
 ~~~~~~~~~~~~~
@@ -648,6 +657,9 @@ This method returns a CSV file with all products of the shop. This doesn't work 
 of writing.
 
 Required parameters: none
+
+Script tags
+-----------
 
 get_script_tags
 ~~~~~~~~~~~~~~~
