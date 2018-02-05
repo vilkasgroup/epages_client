@@ -24,7 +24,7 @@ class CategoryCreate(DataObject):
 
     @name.setter
     def name(self, value):
-        self._name = self._check_str(value)
+        self._name = self._check_str(value, "Name has to be str.")
 
     @property
     def alias(self):
@@ -32,7 +32,7 @@ class CategoryCreate(DataObject):
 
     @alias.setter
     def alias(self, value):
-        self._alias = self._check_str(value)
+        self._alias = self._check_str(value, "Alias has to be str.")
 
     @property
     def pageTitle(self):
@@ -40,7 +40,7 @@ class CategoryCreate(DataObject):
 
     @pageTitle.setter
     def pageTitle(self, value):
-        self._pageTitle = self._check_str(value)
+        self._pageTitle = self._check_str(value, "PageTitle has to be str.")
 
     @property
     def description(self):
@@ -48,7 +48,8 @@ class CategoryCreate(DataObject):
 
     @description.setter
     def description(self, value):
-        self._description = self._check_str(value)
+        self._description = self._check_str(
+            value, "Description has to be str.")
 
     @property
     def navigationCaption(self):
@@ -56,7 +57,8 @@ class CategoryCreate(DataObject):
 
     @navigationCaption.setter
     def navigationCaption(self, value):
-        self._navigationCaption = self._check_str(value)
+        self._navigationCaption = self._check_str(
+            value, "NavigationCaption has to be str.")
 
     def is_valid(self):
         return True

@@ -18,7 +18,7 @@ class ProductLineItemCreate(DataObject):
 
     @productId.setter
     def productId(self, value):
-        self._productId = self._check_str(value, "productId has to be str")
+        self._productId = self._check_str(value, "ProductId has to be a str.")
 
     @property
     def quantity(self):
@@ -27,7 +27,7 @@ class ProductLineItemCreate(DataObject):
     @quantity.setter
     def quantity(self, value):
         self._quantity = self._check_numeric(
-            value, "Quantity has to be numeric")
+            value, "Quantity has to be a numeric type.")
 
     def is_valid(self):
         return True

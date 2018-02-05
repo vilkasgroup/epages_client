@@ -22,7 +22,7 @@ class CustomerCreate(DataObject):
     @customerNumber.setter
     def customerNumber(self, value):
         self._customerNumber = self._check_str(
-            value, "customerNumber has to be str")
+            value, "CustomerNumber has to be a str.")
 
     @property
     def internalNote(self):
@@ -31,7 +31,7 @@ class CustomerCreate(DataObject):
     @internalNote.setter
     def internalNote(self, value):
         self._internalNote = self._check_str(
-            value, "internalNote has to be str")
+            value, "InternalNote has to be a str.")
 
     def is_valid(self):
         # Get values for billing address

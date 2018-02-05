@@ -25,7 +25,7 @@ class CartCreate(DataObject):
 
     @currency.setter
     def currency(self, value):
-        self._currency = self._check_str(value)
+        self._currency = self._check_str(value, "Currency has to be a str.")
 
     @property
     def taxType(self):
@@ -36,7 +36,7 @@ class CartCreate(DataObject):
         if value in ('GROSS', 'NET', 'NONE'):
             self._taxType = value
         else:
-            raise ValueError('taxType must be GROSS, NET or NONE (str)')
+            raise ValueError('TaxType must be GROSS, NET or NONE (str).')
 
     @property
     def locale(self):
@@ -44,7 +44,7 @@ class CartCreate(DataObject):
 
     @locale.setter
     def locale(self, value):
-        self._locale = self._check_str(value)
+        self._locale = self._check_str(value, "Locale has to be a str.")
 
     def is_valid(self):
         return self.lineItems.is_valid()

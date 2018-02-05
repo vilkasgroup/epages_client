@@ -6,12 +6,12 @@ from .data_object import DataObject
 class ListOfObjects(DataObject):
     '''Allow insert only one type items to a list'''
 
-    def __init__(self, type_of_object=None):
+    def __init__(self, type_of_object):
         self._list = []
         self._type_of_object = type_of_object
 
     def add(self, obj):
-        """Add a new item to the list. If the item is not type of set in the constructor, throw Type error """
+        """Add a new item to the list. If the item is not type of set in the constructor, throw Type error"""
         if isinstance(obj, self._type_of_object):
             self._list.append(obj)
         else:
@@ -19,9 +19,11 @@ class ListOfObjects(DataObject):
                 obj).__name__ + " is not instance of " + type(self._type_of_object).__name__)
 
     def get(self):
+        """Returns a list"""
         return self._list
 
     def __str__(self):
+        """string representation of a list"""
         return self._list.__str__()
 
     def get_dict(self):
