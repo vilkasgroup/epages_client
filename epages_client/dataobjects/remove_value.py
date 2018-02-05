@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 
 class RemoveValue(object):
-    """Unsets an attribute for patch command"""
+    """Unsets / removes an attribute for patch command"""
 
     def __init__(self):
         pass

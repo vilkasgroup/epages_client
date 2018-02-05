@@ -11,7 +11,7 @@ class ListOfObjects(DataObject):
         self._type_of_object = type_of_object
 
     def add(self, obj):
-        """Add a new item to the list. If the item is not type of set in the constructor, throw Type error """
+        """Add a new item to the list. If the item is not type of set in the constructor, throw Type error"""
         if isinstance(obj, self._type_of_object):
             self._list.append(obj)
         else:

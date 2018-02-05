@@ -91,7 +91,8 @@ class ProductUpdate(DataObject):
 
     @productNumber.setter
     def productNumber(self, value):
-        self._productNumber = self._check_str(value)
+        self._productNumber = self._check_str(
+            value, "ProductId has to be a str.", False)
 
     @property
     def name(self):
@@ -99,7 +100,8 @@ class ProductUpdate(DataObject):
 
     @name.setter
     def name(self, value):
-        self._name = self._check_str(value, allow_remove_value=True)
+        self._name = self._check_str(
+            value, "Name has to be a str or RemoveValue.", True)
 
     @property
     def shortDescription(self):
@@ -108,7 +110,7 @@ class ProductUpdate(DataObject):
     @shortDescription.setter
     def shortDescription(self, value):
         self._shortDescription = self._check_str(
-            value, allow_remove_value=True)
+            value, "ShortDescription has to be a str or RemoveValue.", True)
 
     @property
     def description(self):
@@ -116,7 +118,8 @@ class ProductUpdate(DataObject):
 
     @description.setter
     def description(self, value):
-        self._description = self._check_str(value, allow_remove_value=True)
+        self._description = self._check_str(
+            value, "Description has to be a str or RemoveValue.", True)
 
     @property
     def manufacturer(self):
@@ -124,7 +127,8 @@ class ProductUpdate(DataObject):
 
     @manufacturer.setter
     def manufacturer(self, value):
-        self._manufacturer = self._check_str(value, allow_remove_value=True)
+        self._manufacturer = self._check_str(
+            value, "Manufacturer has to be a str or RemoveValue.", True)
 
     @property
     def upc(self):
@@ -132,7 +136,8 @@ class ProductUpdate(DataObject):
 
     @upc.setter
     def upc(self, value):
-        self._upc = self._check_str(value, allow_remove_value=True)
+        self._upc = self._check_str(
+            value, "Upc has to be a str or RemoveValue.", True)
 
     @property
     def ean(self):
@@ -140,7 +145,8 @@ class ProductUpdate(DataObject):
 
     @ean.setter
     def ean(self, value):
-        self._ean = self._check_str(value, allow_remove_value=True)
+        self._ean = self._check_str(
+            value, "Ean has to be a str or RemoveValue.", True)
 
     @property
     def essentialFeatures(self):
@@ -149,7 +155,7 @@ class ProductUpdate(DataObject):
     @essentialFeatures.setter
     def essentialFeatures(self, value):
         self._essentialFeatures = self._check_str(
-            value, allow_remove_value=True)
+            value, "EssentialFeatures has to be a str or RemoveValue.", True)
 
     @property
     def price(self):
@@ -158,7 +164,7 @@ class ProductUpdate(DataObject):
     @price.setter
     def price(self, value):
         self._priceInfo_price_amount = self._check_numeric(
-            value, 'Price has to be numeric type', True)
+            value, 'Price has to be a numeric type or RemoveValue.', True)
 
     @property
     def manufacturerPrice(self):
@@ -167,7 +173,7 @@ class ProductUpdate(DataObject):
     @manufacturerPrice.setter
     def manufacturerPrice(self, value):
         self._priceInfo_manufacturerPrice_amount = self._check_numeric(
-            value, 'Manufacturer price has to be numeric type', True)
+            value, 'Manufacturer price has to be a numeric type or RemoveValue.', True)
 
     @property
     def depositPrice(self):
@@ -176,7 +182,7 @@ class ProductUpdate(DataObject):
     @depositPrice.setter
     def depositPrice(self, value):
         self._priceInfo_depositPrice_amount = self._check_numeric(
-            value, 'DepositPrice has to be numeric type', True)
+            value, 'DepositPrice has to be a numeric type or RemoveValue.', True)
 
     @property
     def deliveryPeriod(self):
@@ -184,7 +190,8 @@ class ProductUpdate(DataObject):
 
     @deliveryPeriod.setter
     def deliveryPeriod(self, value):
-        self._deliveryPeriod = self._check_str(value, allow_remove_value=True)
+        self._deliveryPeriod = self._check_str(
+            value, "DeliveryPeriod has to be a str or RemoveValue.", True)
 
     @property
     def minStocklevel(self):
@@ -193,7 +200,7 @@ class ProductUpdate(DataObject):
     @minStocklevel.setter
     def minStocklevel(self, value):
         self._minStocklevel = self._check_numeric(
-            value, 'Minimum stocklevel has to be numeric type', True)
+            value, 'Minimum stocklevel has to be a numeric type or RemoveValue.', True)
 
     @property
     def manufacturerProductNumber(self):
@@ -202,7 +209,7 @@ class ProductUpdate(DataObject):
     @manufacturerProductNumber.setter
     def manufacturerProductNumber(self, value):
         self._manufacturerProductNumber = self._check_str(
-            value, allow_remove_value=True)
+            value, 'ManufacturerProductNumber has to be a str or RemoveValue.', True)
 
     @property
     def productLength(self):
@@ -211,7 +218,7 @@ class ProductUpdate(DataObject):
     @productLength.setter
     def productLength(self, value):
         self._productLength = self._check_numeric(
-            value, 'Product length has to be numeric type', True)
+            value, 'Product length has to be a numeric type or RemoveValue.', True)
 
     @property
     def productWidth(self):
@@ -220,7 +227,7 @@ class ProductUpdate(DataObject):
     @productWidth.setter
     def productWidth(self, value):
         self._productWidth = self._check_numeric(
-            value, 'Product width has to be numeric type', True)
+            value, 'Product width has to be a numeric type or RemoveValue.', True)
 
     @property
     def productHeight(self):
@@ -229,7 +236,7 @@ class ProductUpdate(DataObject):
     @productHeight.setter
     def productHeight(self, value):
         self._productHeight = self._check_numeric(
-            value, 'Product height has to be numeric type', True)
+            value, 'Product height has to be a numeric type or RemoveValue.', True)
 
     @property
     def taxClassId(self):
@@ -238,7 +245,7 @@ class ProductUpdate(DataObject):
     @taxClassId.setter
     def taxClassId(self, value):
         self._priceInfo_taxClass_taxClassId = self._check_str(
-            value, allow_remove_value=True)
+            value, 'TaxClassId has to be a numeric type or RemoveValue.', True)
 
     @property
     def productImage(self):
@@ -246,7 +253,8 @@ class ProductUpdate(DataObject):
 
     @productImage.setter
     def productImage(self, value):
-        self._productImage = self._check_str(value)
+        self._productImage = self._check_str(
+            value, "ProductImage has to be a str.", False)
 
     @property
     def stocklevel(self):
@@ -255,7 +263,7 @@ class ProductUpdate(DataObject):
     @stocklevel.setter
     def stocklevel(self, value):
         self._stocklevel = self._check_numeric(
-            value, 'Stocklevel has to be numeric type', True)
+            value, 'Stocklevel has to be a numeric type or RemoveValue.', True)
 
     @property
     def visible(self):
@@ -263,7 +271,8 @@ class ProductUpdate(DataObject):
 
     @visible.setter
     def visible(self, value):
-        self._visible = self._check_bool(value, 'Visible has to be a bool')
+        self._visible = self._check_bool(
+            value, 'Visible has to be a bool.', False)
 
     def get_patch(self):
         return self.get_list_of_json_patches(self.legals)

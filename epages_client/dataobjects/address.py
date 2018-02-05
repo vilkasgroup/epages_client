@@ -81,7 +81,7 @@ class Address(DataObject):
 
     @company.setter
     def company(self, value):
-        self._company = self._check_str(value)
+        self._company = self._check_str(value, "Company has to be a str.")
 
     @property
     def salutation(self):
@@ -89,7 +89,7 @@ class Address(DataObject):
 
     @salutation.setter
     def salutation(self, value):
-        self._salutation = self._check_str(value)
+        self._salutation = self._check_str(value, "Salutation has to be a str.")
 
     @property
     def title(self):
@@ -97,7 +97,7 @@ class Address(DataObject):
 
     @title.setter
     def title(self, value):
-        self._title = self._check_str(value)
+        self._title = self._check_str(value, "Title has to be a str.")
 
     @property
     def firstName(self):
@@ -105,7 +105,7 @@ class Address(DataObject):
 
     @firstName.setter
     def firstName(self, value):
-        self._firstName = self._check_str(value)
+        self._firstName = self._check_str(value, "FirstName has to be a str.")
 
     @property
     def lastName(self):
@@ -113,7 +113,7 @@ class Address(DataObject):
 
     @lastName.setter
     def lastName(self, value):
-        self._lastName = self._check_str(value)
+        self._lastName = self._check_str(value, "LastName has to be a str.")
 
     @property
     def street(self):
@@ -121,7 +121,7 @@ class Address(DataObject):
 
     @street.setter
     def street(self, value):
-        self._street = self._check_str(value)
+        self._street = self._check_str(value, "Street has to be a str.")
 
     @property
     def streetDetails(self):
@@ -129,7 +129,8 @@ class Address(DataObject):
 
     @streetDetails.setter
     def streetDetails(self, value):
-        self._streetDetails = self._check_str(value)
+        self._streetDetails = self._check_str(
+            value, "StreetDetails has to be a str.")
 
     @property
     def zipCode(self):
@@ -137,7 +138,7 @@ class Address(DataObject):
 
     @zipCode.setter
     def zipCode(self, value):
-        self._zipCode = self._check_str(value)
+        self._zipCode = self._check_str(value, "ZipCode has to be a str.")
 
     @property
     def city(self):
@@ -145,7 +146,7 @@ class Address(DataObject):
 
     @city.setter
     def city(self, value):
-        self._city = self._check_str(value)
+        self._city = self._check_str(value, "City has to be a str.")
 
     @property
     def state(self):
@@ -153,7 +154,7 @@ class Address(DataObject):
 
     @state.setter
     def state(self, value):
-        self._state = self._check_str(value)
+        self._state = self._check_str(value, "State has to be a str.")
 
     @property
     def country(self):
@@ -161,7 +162,7 @@ class Address(DataObject):
 
     @country.setter
     def country(self, value):
-        self._country = self._check_str(value)
+        self._country = self._check_str(value, "Country has to be a str.")
 
     @property
     def vatId(self):
@@ -169,7 +170,7 @@ class Address(DataObject):
 
     @vatId.setter
     def vatId(self, value):
-        self._vatId = self._check_str(value)
+        self._vatId = self._check_str(value, "VatId has to be a str.")
 
     @property
     def birthday(self):
@@ -177,7 +178,7 @@ class Address(DataObject):
 
     @birthday.setter
     def birthday(self, value):
-        self._birthday = self._check_str(value)
+        self._birthday = self._check_str(value, "Birthday has to be a str.")
 
     @property
     def emailAddress(self):
@@ -185,7 +186,8 @@ class Address(DataObject):
 
     @emailAddress.setter
     def emailAddress(self, value):
-        self._emailAddress = self._check_email(value)
+        self._emailAddress = self._check_email(
+            value, "EmailAddress has to be a valid email address.")
 
     @property
     def addressExtension(self):
@@ -193,7 +195,8 @@ class Address(DataObject):
 
     @addressExtension.setter
     def addressExtension(self, value):
-        self._addressExtension = self._check_str(value)
+        self._addressExtension = self._check_str(
+            value, "AddressExtension has to be a str.")
 
     @property
     def bankAccountHolder(self):
@@ -201,7 +204,8 @@ class Address(DataObject):
 
     @bankAccountHolder.setter
     def bankAccountHolder(self, value):
-        self._bankAccountHolder = self._check_str(value)
+        self._bankAccountHolder = self._check_str(
+            value, "BankAccountHolder has to be a str.")
 
     @property
     def bankAccountNumber(self):
@@ -209,7 +213,8 @@ class Address(DataObject):
 
     @bankAccountNumber.setter
     def bankAccountNumber(self, value):
-        self._bankAccountNumber = self._check_str(value)
+        self._bankAccountNumber = self._check_str(
+            value, "BankAccountNumber has to be a str.")
 
     @property
     def bankName(self):
@@ -217,7 +222,7 @@ class Address(DataObject):
 
     @bankName.setter
     def bankName(self, value):
-        self._bankName = self._check_str(value)
+        self._bankName = self._check_str(value, "BankName has to be a str.")
 
     @property
     def bankSortCode(self):
@@ -225,7 +230,8 @@ class Address(DataObject):
 
     @bankSortCode.setter
     def bankSortCode(self, value):
-        self._bankSortCode = self._check_str(value)
+        self._bankSortCode = self._check_str(
+            value, "BankSortCode has to be a str.")
 
     @property
     def businessEmailAddress(self):
@@ -233,7 +239,8 @@ class Address(DataObject):
 
     @businessEmailAddress.setter
     def businessEmailAddress(self, value):
-        self._businessEmailAddress = self._check_email(value)
+        self._businessEmailAddress = self._check_email(
+            value, "BusinessEmailAddress has to be a valid email address.")
 
     @property
     def businessPhoneNumber(self):
@@ -241,7 +248,8 @@ class Address(DataObject):
 
     @businessPhoneNumber.setter
     def businessPhoneNumber(self, value):
-        self._businessPhoneNumber = self._check_str(value)
+        self._businessPhoneNumber = self._check_str(
+            value, "BusinessPhoneNumber has to be a str.")
 
     @property
     def department(self):
@@ -249,7 +257,7 @@ class Address(DataObject):
 
     @department.setter
     def department(self, value):
-        self._department = self._check_str(value)
+        self._department = self._check_str(value, "Department has to be a str.")
 
     @property
     def displayName(self):
@@ -257,7 +265,8 @@ class Address(DataObject):
 
     @displayName.setter
     def displayName(self, value):
-        self._displayName = self._check_str(value)
+        self._displayName = self._check_str(
+            value, "DisplayName has to be a str.")
 
     @property
     def doorCode(self):
@@ -265,7 +274,7 @@ class Address(DataObject):
 
     @doorCode.setter
     def doorCode(self, value):
-        self._doorCode = self._check_str(value)
+        self._doorCode = self._check_str(value, "DoorCode has to be a str.")
 
     @property
     def faxNumber(self):
@@ -273,7 +282,7 @@ class Address(DataObject):
 
     @faxNumber.setter
     def faxNumber(self, value):
-        self._faxNumber = self._check_str(value)
+        self._faxNumber = self._check_str(value, "FaxNumber has to be a str.")
 
     @property
     def fiscalCode(self):
@@ -281,7 +290,7 @@ class Address(DataObject):
 
     @fiscalCode.setter
     def fiscalCode(self, value):
-        self._fiscalCode = self._check_str(value)
+        self._fiscalCode = self._check_str(value, "FiscalCode has to be a str.")
 
     @property
     def gender(self):
@@ -301,7 +310,7 @@ class Address(DataObject):
 
     @jobTitle.setter
     def jobTitle(self, value):
-        self._jobTitle = self._check_str(value)
+        self._jobTitle = self._check_str(value, "JobTitle has to be a str.")
 
     @property
     def middleName(self):
@@ -309,7 +318,7 @@ class Address(DataObject):
 
     @middleName.setter
     def middleName(self, value):
-        self._middleName = self._check_str(value)
+        self._middleName = self._check_str(value, "MiddleName has to be a str.")
 
     @property
     def mobilePhoneNumber(self):
@@ -317,7 +326,8 @@ class Address(DataObject):
 
     @mobilePhoneNumber.setter
     def mobilePhoneNumber(self, value):
-        self._mobilePhoneNumber = self._check_str(value)
+        self._mobilePhoneNumber = self._check_str(
+            value, "MobilePhoneNumber has to be a str.")
 
     @property
     def phoneNumber(self):
@@ -325,7 +335,8 @@ class Address(DataObject):
 
     @phoneNumber.setter
     def phoneNumber(self, value):
-        self._phoneNumber = self._check_str(value)
+        self._phoneNumber = self._check_str(
+            value, "PhoneNumber has to be a str.")
 
     @property
     def privateEmailAddress(self):
@@ -333,7 +344,8 @@ class Address(DataObject):
 
     @privateEmailAddress.setter
     def privateEmailAddress(self, value):
-        self._privateEmailAddress = self._check_email(value)
+        self._privateEmailAddress = self._check_email(
+            value, "PrivateEmailAddress has to be a valid email address.")
 
     @property
     def privatePhoneNumber(self):
@@ -341,7 +353,8 @@ class Address(DataObject):
 
     @privatePhoneNumber.setter
     def privatePhoneNumber(self, value):
-        self._privatePhoneNumber = self._check_str(value)
+        self._privatePhoneNumber = self._check_str(
+            value, "PrivatePhoneNumber has to be a str.")
 
     @property
     def websiteUrl(self):
@@ -349,7 +362,8 @@ class Address(DataObject):
 
     @websiteUrl.setter
     def websiteUrl(self, value):
-        self._websiteUrl = self._check_url(value)
+        self._websiteUrl = self._check_url(
+            value, "WebsiteUrl has to be a valid url address.")
 
     def is_valid(self):
         return True

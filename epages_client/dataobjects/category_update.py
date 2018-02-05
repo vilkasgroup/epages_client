@@ -28,7 +28,8 @@ class CategoryUpdate(DataObject):
 
     @categoryId.setter
     def categoryId(self, value):
-        self._categoryId = self._check_str(value)
+        self._categoryId = self._check_str(
+            value, "CategoryId has to be a str.")
 
     @property
     def name(self):
@@ -36,7 +37,7 @@ class CategoryUpdate(DataObject):
 
     @name.setter
     def name(self, value):
-        self._name = self._check_str(value)
+        self._name = self._check_str(value, "Name has to be a str.")
 
     @property
     def alias(self):
@@ -44,7 +45,7 @@ class CategoryUpdate(DataObject):
 
     @alias.setter
     def alias(self, value):
-        self._alias = self._check_str(value)
+        self._alias = self._check_str(value, "Alias has to be a str.")
 
     @property
     def pageTitle(self):
@@ -52,7 +53,7 @@ class CategoryUpdate(DataObject):
 
     @pageTitle.setter
     def pageTitle(self, value):
-        self._pageTitle = self._check_str(value)
+        self._pageTitle = self._check_str(value, "PageTitle has to be a str.")
 
     @property
     def description(self):
@@ -60,7 +61,8 @@ class CategoryUpdate(DataObject):
 
     @description.setter
     def description(self, value):
-        self._description = self._check_str(value)
+        self._description = self._check_str(
+            value, "Description has to be a str.")
 
     @property
     def navigationCaption(self):
@@ -68,7 +70,8 @@ class CategoryUpdate(DataObject):
 
     @navigationCaption.setter
     def navigationCaption(self, value):
-        self._navigationCaption = self._check_str(value)
+        self._navigationCaption = self._check_str(
+            value, "NavigationCaption has to be a str.")
 
     @property
     def visible(self):
@@ -76,7 +79,7 @@ class CategoryUpdate(DataObject):
 
     @visible.setter
     def visible(self, value):
-        self._visible = self._check_bool(value, 'Visible has to be a bool')
+        self._visible = self._check_bool(value, 'Visible has to be a bool.')
 
     def is_valid(self):
 

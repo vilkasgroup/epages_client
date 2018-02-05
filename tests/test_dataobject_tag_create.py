@@ -22,21 +22,25 @@ class TestStringMethods(BaseUnitTest):
         self.assertEqual(url.is_valid(), False)
 
     def test_0002_set_valid_url_init(self):
-        url = ScriptTagCreate("https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js")
-        self.assertEqual(url.scriptUrl, "https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js")
+        url = ScriptTagCreate(
+            "https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js")
+        self.assertEqual(
+            url.scriptUrl, "https://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js")
         self.assertEqual(url.is_valid(), True)
 
     def test_0003_set_valid_url(self):
         url = ScriptTagCreate()
         url.scriptUrl = "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"
-        self.assertEqual(url.scriptUrl, "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+        self.assertEqual(
+            url.scriptUrl, "https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
         self.assertEqual(url.is_valid(), True)
 
     def test_0004_set_invalid_url_init(self):
         url = ScriptTagCreate()
         with self.assertRaises(ValueError) as e:
-            url = ScriptTagCreate("://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js")
-    
+            url = ScriptTagCreate(
+                "://ajax.googleapis.com/ajax/libs/dojo/1.13.0/dojo/dojo.js")
+
     def test_0004_set_invalid_url(self):
         url = ScriptTagCreate()
         with self.assertRaises(ValueError) as e:
