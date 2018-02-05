@@ -12,7 +12,7 @@ Customers
 get_customers
 ~~~~~~~~~~~~~
 
-Link text <http://example.com/>
+`Link text <http://example.com/>`_
 
 This method fetches all customers from the shop.
 
