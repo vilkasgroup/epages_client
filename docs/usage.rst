@@ -28,7 +28,7 @@ Each method accepts a single dictionary parameter called params.
 
 .. code-block:: python
 
-    # params can have five different values
+    # params can have five different keys
     params = {
         "data": "",
         "param1": "",
@@ -38,6 +38,7 @@ Each method accepts a single dictionary parameter called params.
     }
 
 * data
+    * The content here is most of the times a dictionary, but can have a binary file, too.
 
 * param1
     * The first parameter to add to the api url
