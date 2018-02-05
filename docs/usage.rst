@@ -72,6 +72,8 @@ Examples
     # Example 2
 
     # Set product id
+    # The api url will be:
+    # https://yourshop.vilkasstore.com/rs/shops/yourshop/products/5A497829-7619-ACCC-E487-0A281012346F
     params["param1"] = "5A497829-7619-ACCC-E487-0A281012346F"
 
     # Get product data
@@ -80,6 +82,8 @@ Examples
     # Example 3
 
     # Set product id and image name
+    # The api url will be:
+    # https://yourshop.vilkasstore.com/rs/shops/yourshop/products/5A497829-7619-ACCC-E487-0A281012346F/slideshow/test.jpg
     params["param1"] = "5A497829-7619-ACCC-E487-0A281012346F"
     params["param2"] = "test.jpg"
 
