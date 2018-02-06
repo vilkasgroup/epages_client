@@ -75,7 +75,7 @@ class DataObject(object):
 
         :param value: The value for check.
         :param str error_msg: The error message in ValueError case. Overwrites a default error message.
-        :param bool allow_remove_value: Can the value is a RemoveValue?
+        :param bool allow_remove_value: Can the value be a RemoveValue?
         :return: The given value
         :rtype: str or RemoveValue.
         :raises ValueError: if the value is not a valid email address (or the value is a RemoveValue and allow_remove_value is True).
@@ -93,7 +93,7 @@ class DataObject(object):
 
         :param value: The value for check.
         :param str error_msg: The error message in ValueError case. Overwrites a default error message.
-        :param bool allow_remove_value: Can the value is a RemoveValue?
+        :param bool allow_remove_value: Can the value be a RemoveValue?
         :return: The given value
         :rtype: str or RemoveValue.
         :raises ValueError: if the value is not a valid url address (or the value is a RemoveValue and allow_remove_value is True).
@@ -111,7 +111,7 @@ class DataObject(object):
 
         :param value: The value for check.
         :param str error_msg: The error message in ValueError case. Overwrites a default error message.
-        :param bool allow_remove_value: Can the value is a RemoveValue?
+        :param bool allow_remove_value: Can the value be a RemoveValue?
         :return: The given value
         :rtype: str or RemoveValue.
         :raises TypeError: if the value's type is not in str (or the value is a RemoveValue and allow_remove_value is True).
@@ -126,7 +126,7 @@ class DataObject(object):
 
         :param value: The value for check.
         :param str error_msg: The error message in ValueError case. Overwrites a default error message.
-        :param bool allow_remove_value: Can the value is a RemoveValue?
+        :param bool allow_remove_value: Can the value be a RemoveValue?
         :return: The given value
         :rtype: bool or RemoveValue.
         :raises TypeError: if the value's type is not in bool (or the value is a RemoveValue and allow_remove_value is True).
@@ -141,7 +141,7 @@ class DataObject(object):
 
         :param value: The value for check 
         :param str error_msg: The error message in ValueError case. Overwrites a default error message.
-        :param bool allow_remove_value: Can the value is a RemoveValue?
+        :param bool allow_remove_value: Can the value be a RemoveValue?
         :return: The given value
         :rtype: int, float, or RemoveValue.
         :raises TypeError: if the value's type is not in int or float (or the value is a RemoveValue and allow_remove_value is True).
@@ -158,7 +158,7 @@ class DataObject(object):
         :param value: The value for check.
         :param str error_msg: The error message in ValueError case.
         :param tuple allowed_types: A tuple of classes.
-        :paran bool allow_remove_value: Can the value is a RemoveValue object?
+        :paran bool allow_remove_value: Can the value be a RemoveValue object?
         :return: The given value if the value is one of allowed types or allow_remove_value is true and the value is an instance of RemoveValue.
         :raises TypeError: if the value's type is not in allowed_types (or the value is a RemoveValue and allow_remove_value is True).
         '''
