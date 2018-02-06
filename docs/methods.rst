@@ -287,7 +287,7 @@ This method adds an order to a shop.
 
 Required parameters: Cart id in param1
 
-**Note:** Before creating an order, the billing address must be set in cart. Billing address can
+**Note:** Before creating an order, the billing address must be set in a cart. Billing address can
 be set after cart creation using the update_billing_address method.
 
 update_order
