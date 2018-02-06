@@ -627,8 +627,8 @@ Required parameters: Category and product id in data
 **Note:** There can be more than one category or product id when connecting them to each other.
 Category id and product id values can be a list of ids, too.
 
-delete_product_from_category
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+disconnect_product_and_category
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 `API Docs <https://developer.epages.com/apps/api-reference/delete-shopid-product-category-assignments.html>`_
 
