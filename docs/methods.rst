@@ -278,14 +278,17 @@ This method deletes a product line item from a cart.
 
 Required parameters: Cart id in param1, product line item id in param2
 
-create_order
-~~~~~~~~~~~~
+add_order
+~~~~~~~~~
 
 `API Docs <https://developer.epages.com/apps/api-reference/post-shopid-carts-cartid-order.html>`_
 
-This method creates an order.
+This method adds an order to a shop.
 
 Required parameters: Cart id in param1
+
+**Note:** Before creating an order, the billing address must be set in cart. Billing address can
+be set after cart creation using the update_billing_address method.
 
 update_order
 ~~~~~~~~~~~~
