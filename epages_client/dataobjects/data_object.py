@@ -36,6 +36,7 @@ class DataObject(object):
 
     def get_list_of_json_patches(self, legal_operations):
         '''Go over all the variables of the data_object and return it like json_patch commands
+
         :param dict legal_operations: Key values are attribute paths and values are tuple of allowed FetchOperators.
         :return: Patch commands for API. A list of jsonPatches
         :return: list
@@ -145,7 +146,7 @@ class DataObject(object):
         :rtype: int, float, or RemoveValue.
         :raises TypeError: if the value's type is not in int or float (or the value is a RemoveValue and allow_remove_value is True).
         '''
-        
+
         error_msg = error_msg or 'The given value is not a numeric type.'
         allow_types = (int, float)
         return self._check_type(value, error_msg, allow_types, allow_remove_value)
