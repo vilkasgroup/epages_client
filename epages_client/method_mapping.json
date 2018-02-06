@@ -200,7 +200,7 @@
         "require": ["param1", "param2"],
         "path2": "/line-items"
     },
-    "create_order": {
+    "add_order": {
         "method": "post",
         "require": ["param1"],
         "api_dict": {
@@ -470,7 +470,7 @@
             "path": "/product-category-assignments"
         }
     },
-    "delete_product_from_category": {
+    "disconnect_product_and_category": {
         "method": "delete",
         "require": ["q_categoryId", "q_productId"],
         "api_dict": {

@@ -231,7 +231,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         response = self.client.delete_shipping_address(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
-    def test_1001_create_order(self):
+    def test_1001_add_order(self):
         # create a cart
         cart = CartCreate()
         cart.currency = 'EUR'
@@ -276,7 +276,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
 
         time.sleep(1)
 
-        response = self.client.create_order(basic_params)
+        response = self.client.add_order(basic_params)
         self.assertEqual(isinstance(response, dict), True)
 
         self.save_resource(self.order_id_file, response['orderId'])
@@ -327,7 +327,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         response = self.client.get_order_documents(self.params)
         self.assertEqual(isinstance(response, dict), True)
 
-    def test_2001_try_create_order_without_billing_address(self):
+    def test_2001_try_add_order_without_billing_address(self):
         # User forget update billing address
 
         # create a cart
@@ -338,7 +338,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
 
         # Billing address is missing!
         with self.assertRaises(RuntimeError) as e:
-            response = self.client.create_order(basic_params)
+            response = self.client.add_order(basic_params)
 
     def test_2002_try_add_billing_address_without_params_object(self):
         # User forget add object to params
@@ -390,7 +390,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
         with self.assertRaises(RuntimeError) as e:
             response = self.client.update_billing_address(self.params)
 
-    def test_2005_create_order_twise(self):
+    def test_2005_add_order_twice(self):
         # try two times create order from a cart
 
         # Add correct billing address
@@ -402,7 +402,7 @@ class TestCartsOrdersAndOrdersMethods(BaseUnitTest):
 
         response = self.client.update_billing_address(basic_params)
 
-        response = self.client.create_order(basic_params)
+        response = self.client.add_order(basic_params)
         # Reason: Not Found
         with self.assertRaises(RuntimeError) as e:
-            response = self.client.create_order(basic_params)
+            response = self.client.add_order(basic_params)
