@@ -48,7 +48,8 @@ class ProductCreate(DataObject):
 
     @productNumber.setter
     def productNumber(self, value):
-        self._productNumber = self._check_str(value)
+        self._productNumber = self._check_str(
+            value, "ProductNumber has to be a str.")
 
     @property
     def name(self):
@@ -56,7 +57,7 @@ class ProductCreate(DataObject):
 
     @name.setter
     def name(self, value):
-        self._name = self._check_str(value)
+        self._name = self._check_str(value, "Name has to be a str.")
 
     @property
     def shortDescription(self):
@@ -64,7 +65,8 @@ class ProductCreate(DataObject):
 
     @shortDescription.setter
     def shortDescription(self, value):
-        self._shortDescription = self._check_str(value)
+        self._shortDescription = self._check_str(
+            value, "ShortDescription has to be a str.")
 
     @property
     def description(self):
@@ -72,7 +74,7 @@ class ProductCreate(DataObject):
 
     @description.setter
     def description(self, value):
-        self._description = self._check_str(value)
+        self._description = self._check_str(value, "Description has to be a str.")
 
     @property
     def manufacturer(self):
@@ -80,7 +82,7 @@ class ProductCreate(DataObject):
 
     @manufacturer.setter
     def manufacturer(self, value):
-        self._manufacturer = self._check_str(value)
+        self._manufacturer = self._check_str(value, "Manufacturer has to be a str.")
 
     @property
     def price(self):
@@ -89,7 +91,7 @@ class ProductCreate(DataObject):
     @price.setter
     def price(self, value):
         self._price = self._check_numeric(
-            value, "Price has to be numeric type")
+            value, "Price has to be a numeric type.")
 
     @property
     def essentialFeatures(self):
@@ -97,7 +99,7 @@ class ProductCreate(DataObject):
 
     @essentialFeatures.setter
     def essentialFeatures(self, value):
-        self._essentialFeatures = self._check_str(value)
+        self._essentialFeatures = self._check_str(value, "EssentialFeatures has to be a str.")
 
     @property
     def upc(self):
@@ -105,7 +107,7 @@ class ProductCreate(DataObject):
 
     @upc.setter
     def upc(self, value):
-        self._upc = self._check_str(value)
+        self._upc = self._check_str(value, "Upc has to be a str.")
 
     @property
     def ean(self):
@@ -113,7 +115,7 @@ class ProductCreate(DataObject):
 
     @ean.setter
     def ean(self, value):
-        self._ean = self._check_str(value)
+        self._ean = self._check_str(value, 'Ean has to be a str.')
 
     @property
     def deliveryPeriod(self):
@@ -121,7 +123,7 @@ class ProductCreate(DataObject):
 
     @deliveryPeriod.setter
     def deliveryPeriod(self, value):
-        self._deliveryPeriod = self._check_str(value)
+        self._deliveryPeriod = self._check_str(value, 'DeliveryPeriod has to be a str.')
 
     @property
     def visible(self):
@@ -129,7 +131,7 @@ class ProductCreate(DataObject):
 
     @visible.setter
     def visible(self, value):
-        self._visible = self._check_bool(value, 'Visible has to be a bool')
+        self._visible = self._check_bool(value, 'Visible has to be a bool type.')
 
     @property
     def taxClassId(self):
@@ -137,7 +139,7 @@ class ProductCreate(DataObject):
 
     @taxClassId.setter
     def taxClassId(self, value):
-        self._taxClassId = self._check_str(value)
+        self._taxClassId = self._check_str(value, 'TaxClassId has to be a str.')
 
     @property
     def stocklevel(self):
@@ -146,7 +148,7 @@ class ProductCreate(DataObject):
     @stocklevel.setter
     def stocklevel(self, value):
         self._stocklevel = self._check_numeric(
-            value, 'Stocklevel has to be numeric type')
+            value, 'Stocklevel has to be a numeric type.')
 
     @property
     def depositPrice(self):
@@ -155,7 +157,7 @@ class ProductCreate(DataObject):
     @depositPrice.setter
     def depositPrice(self, value):
         self._depositPrice = self._check_numeric(
-            value, 'DepositPrice has to be numeric type')
+            value, 'DepositPrice has to be a numeric type.')
 
     @property
     def manufacturerPrice(self):
@@ -164,7 +166,7 @@ class ProductCreate(DataObject):
     @manufacturerPrice.setter
     def manufacturerPrice(self, value):
         self._manufacturerPrice = self._check_numeric(
-            value, 'Stocklevel has to be numeric type')
+            value, 'Stocklevel has to be a numeric type.')
 
     def is_valid(self):
         ''' Have all mandatory values set?

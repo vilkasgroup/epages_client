@@ -60,7 +60,8 @@ class OrderUpdate(DataObject):
 
     @orderNumber.setter
     def orderNumber(self, value):
-        self._orderNumber = self._check_str(value)
+        self._orderNumber = self._check_str(
+            value, 'OrderNumber has to be a str.', False)
 
     @property
     def customerComment(self):
@@ -68,7 +69,8 @@ class OrderUpdate(DataObject):
 
     @customerComment.setter
     def customerComment(self, value):
-        self._customerComment = self._check_str(value, allow_remove_value=True)
+        self._customerComment = self._check_str(
+            value, 'CustomerComment has to be a str or RemoveValue.', True)
 
     @property
     def internalNote(self):
@@ -76,7 +78,8 @@ class OrderUpdate(DataObject):
 
     @internalNote.setter
     def internalNote(self, value):
-        self._internalNote = self._check_str(value, allow_remove_value=True)
+        self._internalNote = self._check_str(
+            value, 'InternalNote has to be a str or RemoveValue.', True)
 
     @property
     def viewedOn(self):
@@ -84,7 +87,8 @@ class OrderUpdate(DataObject):
 
     @viewedOn.setter
     def viewedOn(self, value):
-        self._viewedOn = self._check_str(value, allow_remove_value=True)
+        self._viewedOn = self._check_str(
+            value, 'ViewedOn has to be a str or RemoveValue.', True)
 
     @property
     def rejectedOn(self):
@@ -92,7 +96,8 @@ class OrderUpdate(DataObject):
 
     @rejectedOn.setter
     def rejectedOn(self, value):
-        self._rejectedOn = self._check_str(value, allow_remove_value=True)
+        self._rejectedOn = self._check_str(
+            value, 'RejectedOn has to be a str or RemoveValue.', True)
 
     @property
     def inProcessOn(self):
@@ -100,7 +105,8 @@ class OrderUpdate(DataObject):
 
     @inProcessOn.setter
     def inProcessOn(self, value):
-        self._inProcessOn = self._check_str(value, allow_remove_value=True)
+        self._inProcessOn = self._check_str(
+            value, 'InProcessOn has to be a str or RemoveValue.', True)
 
     @property
     def pendingOn(self):
@@ -108,7 +114,8 @@ class OrderUpdate(DataObject):
 
     @pendingOn.setter
     def pendingOn(self, value):
-        self._pendingOn = self._check_str(value, allow_remove_value=True)
+        self._pendingOn = self._check_str(
+            value, 'PendingOn has to be a str or RemoveValue.', True)
 
     @property
     def readyForDispatchOn(self):
@@ -117,7 +124,7 @@ class OrderUpdate(DataObject):
     @readyForDispatchOn.setter
     def readyForDispatchOn(self, value):
         self._readyForDispatchOn = self._check_str(
-            value, allow_remove_value=True)
+            value, 'ReadyForDispatchOn has to be a str or RemoveValue.', True)
 
     @property
     def partiallyDispatchedOn(self):
@@ -126,7 +133,7 @@ class OrderUpdate(DataObject):
     @partiallyDispatchedOn.setter
     def partiallyDispatchedOn(self, value):
         self._partiallyDispatchedOn = self._check_str(
-            value, allow_remove_value=True)
+            value, 'PartiallyDispatchedOn has to be a str or RemoveValue', True)
 
     @property
     def dispatchedOn(self):
@@ -134,7 +141,8 @@ class OrderUpdate(DataObject):
 
     @dispatchedOn.setter
     def dispatchedOn(self, value):
-        self._dispatchedOn = self._check_str(value, allow_remove_value=True)
+        self._dispatchedOn = self._check_str(
+            value, 'DispatchedOn has to be a str or RemoveValue.', True)
 
     @property
     def deliveredOn(self):
@@ -142,7 +150,8 @@ class OrderUpdate(DataObject):
 
     @deliveredOn.setter
     def deliveredOn(self, value):
-        self._deliveredOn = self._check_str(value, allow_remove_value=True)
+        self._deliveredOn = self._check_str(
+            value, 'DeliveredOn has to be a str or RemoveValue.', True)
 
     @property
     def partiallyInvoicedOn(self):
@@ -151,7 +160,7 @@ class OrderUpdate(DataObject):
     @partiallyInvoicedOn.setter
     def partiallyInvoicedOn(self, value):
         self._partiallyInvoicedOn = self._check_str(
-            value, allow_remove_value=True)
+            value, 'PartiallyInvoicedOn has to be a str or RemoveValue.', True)
 
     @property
     def invoicedOn(self):
@@ -159,7 +168,8 @@ class OrderUpdate(DataObject):
 
     @invoicedOn.setter
     def invoicedOn(self, value):
-        self._invoicedOn = self._check_str(value, allow_remove_value=True)
+        self._invoicedOn = self._check_str(
+            value, 'InvoicedOn has to be a str or RemoveValue.', True)
 
     @property
     def partiallyPaidOn(self):
@@ -167,7 +177,8 @@ class OrderUpdate(DataObject):
 
     @partiallyPaidOn.setter
     def partiallyPaidOn(self, value):
-        self._partiallyPaidOn = self._check_str(value, allow_remove_value=True)
+        self._partiallyPaidOn = self._check_str(
+            value, 'PartiallyPaidOn has to be a str or RemoveValue.', True)
 
     @property
     def paidOn(self):
@@ -175,7 +186,8 @@ class OrderUpdate(DataObject):
 
     @paidOn.setter
     def paidOn(self, value):
-        self._paidOn = self._check_str(value, allow_remove_value=True)
+        self._paidOn = self._check_str(
+            value, 'PaidOn has to be a str or RemoveValue.', True)
 
     @property
     def returnedOn(self):
@@ -183,7 +195,8 @@ class OrderUpdate(DataObject):
 
     @returnedOn.setter
     def returnedOn(self, value):
-        self._returnedOn = self._check_str(value, allow_remove_value=True)
+        self._returnedOn = self._check_str(
+            value, 'ReturnedOn has to be a str or RemoveValue.', True)
 
     @property
     def closedOn(self):
@@ -191,7 +204,8 @@ class OrderUpdate(DataObject):
 
     @closedOn.setter
     def closedOn(self, value):
-        self._closedOn = self._check_str(value, allow_remove_value=True)
+        self._closedOn = self._check_str(
+            value, 'ClosedOn has to be a str or RemoveValue.', True)
 
     @property
     def archivedOn(self):
@@ -199,7 +213,8 @@ class OrderUpdate(DataObject):
 
     @archivedOn.setter
     def archivedOn(self, value):
-        self._archivedOn = self._check_str(value, allow_remove_value=True)
+        self._archivedOn = self._check_str(
+            value, 'ArchivedOn has to be a str or RemoveValue.', True)
 
     def is_valid(self):
         return True

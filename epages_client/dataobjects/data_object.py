@@ -13,8 +13,9 @@ class DataObject(object):
         '''
         Go over all values of object's _-named variables (and not None) and creates dictionary.
         The keys of the dictionary are variable names without "_"-mark.
-        Return:
-            Disctionary
+
+        :return: the values of a dataobject for HttpHandler
+        :rtype: dict
         '''
         self_values = self.__dict__
         data_dict = {}
@@ -35,8 +36,10 @@ class DataObject(object):
 
     def get_list_of_json_patches(self, legal_operations):
         '''Go over all the variables of the data_object and return it like json_patch commands
-        Return:
-            A list of objects
+
+        :param dict legal_operations: Key values are attribute paths and values are tuple of allowed FetchOperators.
+        :return: Patch commands for API. A list of jsonPatches
+        :return: list
         '''
         list_of_json_patches = []
         for key, value in self.get_dict().items():
@@ -67,43 +70,98 @@ class DataObject(object):
         return list_of_json_patches
 
     def _check_email(self, value, error_msg=None, allow_remove_value=False):
-        '''Return given value as str (email) if the value is valid e-mail address. Otherwise throws ValueError.'''
+        '''
+        Checks if the value is a valid email address.
+
+        :param value: The value for check.
+        :param str error_msg: The error message in ValueError case. Overwrites a default error message.
+        :param bool allow_remove_value: Can the value be a RemoveValue?
+        :return: The given value
+        :rtype: str or RemoveValue.
+        :raises ValueError: if the value is not a valid email address (or the value is a RemoveValue and allow_remove_value is True).
+        '''
 
         if validators.email(value) or (allow_remove_value and isinstance(value, RemoveValue)):
             return value
         else:
-            error_msg = error_msg or "The given value is not a valid email address"
+            error_msg = error_msg or "The given value is not a valid email address."
             raise ValueError(error_msg)
 
     def _check_url(self, value, error_msg=None, allow_remove_value=False):
-        '''Return given value as str (URL) if the value is valid url. Otherwise throws ValueError.'''
+        '''
+        Checks if the value is a valid url address.
 
-        if validators.url(value):
+        :param value: The value for check.
+        :param str error_msg: The error message in ValueError case. Overwrites a default error message.
+        :param bool allow_remove_value: Can the value be a RemoveValue?
+        :return: The given value
+        :rtype: str or RemoveValue.
+        :raises ValueError: if the value is not a valid url address (or the value is a RemoveValue and allow_remove_value is True).
+        '''
+
+        if validators.url(value) or (allow_remove_value and isinstance(value, RemoveValue)):
             return value
         else:
-            error_msg = error_msg or "A given value is not a valid url."
+            error_msg = error_msg or "The given value is not a valid url."
             raise ValueError(error_msg)
 
     def _check_str(self, value, error_msg=None, allow_remove_value=False):
-        '''Return given value if the value is type of str. Otherwise throws TypeError.'''
-        error_msg = error_msg or 'A given value is not str'  # TODO: str(value)
+        '''
+        Checks if the value is str.
+
+        :param value: The value for check.
+        :param str error_msg: The error message in ValueError case. Overwrites a default error message.
+        :param bool allow_remove_value: Can the value be a RemoveValue?
+        :return: The given value
+        :rtype: str or RemoveValue.
+        :raises TypeError: if the value's type is not in str (or the value is a RemoveValue and allow_remove_value is True).
+        '''
+        error_msg = error_msg or 'The given value is not a str.'
         allow_types = string_types
         return self._check_type(value, error_msg, allow_types, allow_remove_value)
 
     def _check_bool(self, value, error_msg=None, allow_remove_value=False):
-        '''Return given value if the value is type of bool. Otherwise throws TypeError.'''
-        error_msg = error_msg or 'A given value is not bool.'  # TODO: str(value)
+        '''
+        Checks if the value is bool.
+
+        :param value: The value for check.
+        :param str error_msg: The error message in ValueError case. Overwrites a default error message.
+        :param bool allow_remove_value: Can the value be a RemoveValue?
+        :return: The given value
+        :rtype: bool or RemoveValue.
+        :raises TypeError: if the value's type is not in bool (or the value is a RemoveValue and allow_remove_value is True).
+        '''
+        error_msg = error_msg or 'The given value is not a bool.'
         allow_types = (bool,)
         return self._check_type(value, error_msg, allow_types, allow_remove_value)
 
     def _check_numeric(self, value, error_msg=None, allow_remove_value=False):
-        '''Return given value if the value is type of int or float. Otherwise throws TypeError.'''
-        error_msg = error_msg or 'A given value is not numeric'  # TODO: str(value)
+        '''
+        Checks if the value is numeric (int or float)
+
+        :param value: The value for check 
+        :param str error_msg: The error message in ValueError case. Overwrites a default error message.
+        :param bool allow_remove_value: Can the value be a RemoveValue?
+        :return: The given value
+        :rtype: int, float, or RemoveValue.
+        :raises TypeError: if the value's type is not in int or float (or the value is a RemoveValue and allow_remove_value is True).
+        '''
+
+        error_msg = error_msg or 'The given value is not a numeric type.'
         allow_types = (int, float)
         return self._check_type(value, error_msg, allow_types, allow_remove_value)
 
     def _check_type(self, value, error_msg, allowed_types, allow_remove_value):
-        '''Return given value if the value is type of allowed types or allow_remove_value is true and value is instance of RemoveValue. Otherwise throws TypeError.'''
+        '''
+        Return the given value if its type is in the allowed_types.
+
+        :param value: The value for check.
+        :param str error_msg: The error message in ValueError case.
+        :param tuple allowed_types: A tuple of classes.
+        :paran bool allow_remove_value: Can the value be a RemoveValue object?
+        :return: The given value if the value is one of allowed types or allow_remove_value is true and the value is an instance of RemoveValue.
+        :raises TypeError: if the value's type is not in allowed_types (or the value is a RemoveValue and allow_remove_value is True).
+        '''
         if isinstance(value, allowed_types) or (allow_remove_value and isinstance(value, RemoveValue)):
             return value
         else:

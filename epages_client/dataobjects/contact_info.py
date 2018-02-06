@@ -37,7 +37,7 @@ class ContactInfo(DataObject):
 
     @name.setter
     def name(self, value):
-        self._name = self._check_str(value)
+        self._name = self._check_str(value, "Name has to be a str.")
 
     @property
     def title(self):
@@ -45,7 +45,7 @@ class ContactInfo(DataObject):
 
     @title.setter
     def title(self, value):
-        self._title = self._check_str(value)
+        self._title = self._check_str(value, "Title has to be a str.")
 
     @property
     def navigationCaption(self):
@@ -53,7 +53,7 @@ class ContactInfo(DataObject):
 
     @navigationCaption.setter
     def navigationCaption(self, value):
-        self._navigationCaption = self._check_str(value)
+        self._navigationCaption = self._check_str(value, "NavigationCaption has to be a str.")
 
     @property
     def shortDescription(self):
@@ -61,7 +61,7 @@ class ContactInfo(DataObject):
 
     @shortDescription.setter
     def shortDescription(self, value):
-        self._shortDescription = self._check_str(value)
+        self._shortDescription = self._check_str(value, "ShortDescription has to be a str.")
 
     @property
     def description(self):
@@ -69,7 +69,7 @@ class ContactInfo(DataObject):
 
     @description.setter
     def description(self, value):
-        self._description = self._check_str(value)
+        self._description = self._check_str(value, "Description has to be a str.")
 
     @property
     def company(self):
@@ -77,7 +77,7 @@ class ContactInfo(DataObject):
 
     @company.setter
     def company(self, value):
-        self._company = self._check_str(value)
+        self._company = self._check_str(value, "Company has to be a str.")
 
     @property
     def contactPerson(self):
@@ -85,7 +85,7 @@ class ContactInfo(DataObject):
 
     @contactPerson.setter
     def contactPerson(self, value):
-        self._contactPerson = self._check_str(value)
+        self._contactPerson = self._check_str(value, "ContactPerson has to be a str.")
 
     @property
     def contactPersonJobTitle(self):
@@ -93,7 +93,7 @@ class ContactInfo(DataObject):
 
     @contactPersonJobTitle.setter
     def contactPersonJobTitle(self, value):
-        self._contactPersonJobTitle = self._check_str(value)
+        self._contactPersonJobTitle = self._check_str(value, "ContactPersonJobTitle has to be a str.")
 
     @property
     def address(self):
@@ -101,7 +101,7 @@ class ContactInfo(DataObject):
 
     @address.setter
     def address(self, value):
-        self._address = self._check_str(value)
+        self._address = self._check_str(value, "Address has to be a str.")
 
     @property
     def phone(self):
@@ -109,7 +109,7 @@ class ContactInfo(DataObject):
 
     @phone.setter
     def phone(self, value):
-        self._phone = self._check_str(value)
+        self._phone = self._check_str(value, "Phone has to be a str.")
 
     @property
     def email(self):
@@ -117,7 +117,7 @@ class ContactInfo(DataObject):
 
     @email.setter
     def email(self, value):
-        self._email = self._check_email(value)
+        self._email = self._check_email(value, "Email has to be a valid email address.")
 
     def is_valid(self):
         return True
