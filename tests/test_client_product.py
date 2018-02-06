@@ -963,20 +963,20 @@ class TestProductMethods(BaseUnitTest):
 
         self.assertEqual(isinstance(response, dict), True)
 
-    def test_089_delete_product_from_category_no_data(self):
+    def test_089_disconnect_product_and_category_no_data(self):
 
         with self.assertRaises(ValueError) as e:
-            response = self.client.delete_product_from_category(self.params)
+            response = self.client.disconnect_product_and_category(self.params)
 
-    def test_090_delete_product_from_category_false_data(self):
+    def test_090_disconnect_product_and_category_false_data(self):
 
         self.params["query"]["categoryId"] = str(uuid.uuid4())
         self.params["query"]["productId"] = str(uuid.uuid4())
 
         with self.assertRaises(RuntimeError) as e:
-            response = self.client.delete_product_from_category(self.params)
+            response = self.client.disconnect_product_and_category(self.params)
 
-    def test_091_delete_product_from_category(self):
+    def test_091_disconnect_product_and_category(self):
 
         categories = self.get_category_ids()
         product_id = self.get_product_id()
@@ -984,7 +984,7 @@ class TestProductMethods(BaseUnitTest):
         self.params["query"]["categoryId"] = categories[0]
         self.params["query"]["productId"] = product_id
 
-        response = self.client.delete_product_from_category(self.params)
+        response = self.client.disconnect_product_and_category(self.params)
 
         self.assertEqual(isinstance(response, dict), True)
 
