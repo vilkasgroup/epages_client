@@ -66,6 +66,7 @@ coverage: ## check code coverage quickly with the default Python
 docs: ## generate Sphinx HTML documentation, including API docs
 	rm -f docs/epages_client.rst
 	rm -f docs/modules.rst
+	rm -rf docs/_build/doctrees/
 	sphinx-apidoc -o docs/ epages_client
 	$(MAKE) -C docs clean
 	$(MAKE) -C docs html
