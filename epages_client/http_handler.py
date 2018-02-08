@@ -44,11 +44,11 @@ class HttpHandler(object):
 
     def get(self, dict_data):
         '''
-        Do the GET request. 
+        Do the GET request.
 
         :param: dict dict_data: request dictionary
         :return: Response from the web shop server
-        :rtype dict
+        :rtype: dict
         '''
 
         self._set_headers(dict_data, "get")
@@ -57,11 +57,11 @@ class HttpHandler(object):
 
     def post(self, dict_data):
         '''
-        Do the POST request. 
+        Do the POST request.
 
         :param: dict dict_data: request dictionary
         :return: Response from the web shop server
-        :rtype dict
+        :rtype: dict
         '''
 
         self._set_headers(dict_data, "post")
@@ -70,11 +70,11 @@ class HttpHandler(object):
 
     def put(self, dict_data):
         '''
-        Do the PUT request. 
+        Do the PUT request.
 
         :param: dict dict_data: request dictionary
         :return: Response from the web shop server
-        :rtype dict
+        :rtype: dict
         '''
 
         self._set_headers(dict_data, "put")
@@ -83,24 +83,24 @@ class HttpHandler(object):
 
     def delete(self, dict_data):
         '''
-        Do delete HTTP-request. 
+        Do delete HTTP-request.
 
         :param: dict dict_data: request dictionary
         :return: Response from the web shop server
-        :rtype dict
-        '''
+        :rtype: dict
 
+        '''
         self._set_headers(dict_data, "delete")
 
         return self._request(requests.delete, dict_data)
 
     def patch(self, dict_data):
         '''
-        Do the patch HTTP-patch. 
+        Do the patch HTTP-patch.
 
         :param: dict dict_data: request dictionary
         :return: Response from the web shop server
-        :rtype dict
+        :rtype: dict
         '''
 
         self._set_headers(dict_data, "patch")
@@ -146,7 +146,7 @@ class HttpHandler(object):
 
         :param: dict dict_data: request dictionary
         :return Tuple of path, query, and data
-        :rtype tuple(dict, dict, dict)
+        :rtype: tuple(dict, dict, dict)
         :raises ValueError: if path, query, or data is not set in the request dictionary
         '''
         if 'path' in dict_data:
