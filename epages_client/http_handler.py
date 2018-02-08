@@ -88,8 +88,8 @@ class HttpHandler(object):
         :param: dict dict_data: request dictionary
         :return: Response from the web shop server
         :rtype: dict
-
         '''
+        
         self._set_headers(dict_data, "delete")
 
         return self._request(requests.delete, dict_data)
@@ -149,6 +149,7 @@ class HttpHandler(object):
         :rtype: tuple(dict, dict, dict)
         :raises ValueError: if path, query, or data is not set in the request dictionary
         '''
+        
         if 'path' in dict_data:
             path = dict_data['path']
             logging.debug('path: %s', str(path))
