@@ -12,11 +12,6 @@ install: pip install -U tox-travis python-coveralls
 # command to run tests, e.g. python setup.py test
 script: tox
 
-branches:
-  only:
-  - master
-  - develop
-
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
