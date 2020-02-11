@@ -28,7 +28,7 @@ test_requirements = [
 
 setup(
     name='epages_client',
-    version='0.1.10',
+    version='0.2.0',
     description="Python client for ePages REST API.",
     long_description=readme + '\n\n' + history,
     author="Pekka Piispanen, Tero Kotti",
