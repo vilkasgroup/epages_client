@@ -1,25 +1,26 @@
 [[source]]
-
 name = "pypi"
 url = "https://pypi.python.org/simple"
 verify_ssl = true
 
-
 [packages]
-
-"flake8" = "*"
 requests = "*"
-pylint = "*"
 validators = "*"
-sphinx = "*"
-coverage = "*"
-bumpversion = "*"
 
 
 [requires]
-
 python_version = "3.6"
 
-
 [dev-packages]
-
+watchdog = "*"
+tox = "*"
+cryptography = "*"
+pytest = "*"
+pytest-runner = "*"
+sphinx = "*"
+PyYAML = "*"
+coverage = "*"
+bumpversion = "*"
+pylint = "*"
+flake8 = "*"
+wheel = "*"
